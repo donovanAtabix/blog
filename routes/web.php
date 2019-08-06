@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/avatars/avatar', 'AvatarController@avatar');
+
+Route::get('/blogposts/index', 'BlogpostController@index');

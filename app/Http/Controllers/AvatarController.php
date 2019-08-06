@@ -20,4 +20,9 @@ class AvatarController extends Controller
     {
         //
     }
+
+    public function avatar()
+    {
+        return view('/avatars/avatar');
+    }
 }

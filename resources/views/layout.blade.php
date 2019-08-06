@@ -9,14 +9,34 @@
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600"
     rel="stylesheet">
+
+    <style>
+        .topnav{
+            overflow: hidden;
+        }
+
+        .topnav li {
+            float: left;
+            color: #636b6f;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a{
+            color: #636b6f;
+        }
+    </style>
+
 </head>
 <body>
     <div>
         <nav>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Posts</a></li>
-                <li><a href="">Avatar</a></li>
+            <ul class="topnav">
+                <li class="topnav"><a href="">Home</a></li>
+                <li class="topnav"><a href="">Posts</a></li>
+                <li class="topnav"><a href="">Avatar</a></li>
             </ul>
         </nav>
     </div>
