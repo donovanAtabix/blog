@@ -25,7 +25,10 @@ class PostController extends Controller
     public function store()
     {
         $attributes = request(['title', 'post']);
-        Post::create($attributes + ['owner_id' => auth()->id()]);
+
+        $post = new Post($attributes);
+        $post->user()->associate(auth()->user());
+        $post->save();
 
         return redirect('/blogposts/index');
     }
