@@ -27,6 +27,14 @@
         .topnav a{
             color: #636b6f;
         }
+
+        div.box {
+            background-color: white;
+            width: 200px;
+            padding: 25px;
+            border: 3px #636b6f;
+        }
+
     </style>
 
 </head>
@@ -35,7 +43,7 @@
         <nav>
             <ul class="topnav">
                 <li class="topnav"><a href="">Home</a></li>
-                <li class="topnav"><a href="">Posts</a></li>
+                <li class="topnav"><a href="/blogposts/index">Posts</a></li>
                 <li class="topnav"><a href="">Avatar</a></li>
             </ul>
         </nav>

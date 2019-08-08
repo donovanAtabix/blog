@@ -19,6 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/avatars/avatar', 'AvatarController@avatar');
+Route::get('/blogposts/index', 'PostController@index');
 
-Route::get('/blogposts/index', 'BlogpostController@index');
+Route::get('/blogposts/createpost', 'PostController@creatpost');
+
+Route::post('/blogposts/createpost', 'PostController@store');
+
+Route::get('/blogposts/{post}/show', 'PostController@show');
+
+Route::post('');
