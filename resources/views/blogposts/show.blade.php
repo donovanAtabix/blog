@@ -24,7 +24,8 @@
     </div>
 
 
-        <form class="box" method="POST" action="/blogpost/{{$post->id}}/show">
+        <form class="box" method="POST" action="/blogposts/{{$post->id}}/show">
+            {{ csrf_field() }}
             <div>
                 <label class="label" for="comment">Add Comment</label>
             </div>

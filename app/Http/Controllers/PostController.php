@@ -27,8 +27,6 @@ class PostController extends Controller
         $attributes = request(['title', 'post']);
         Post::create($attributes + ['owner_id' => auth()->id()]);
 
-        //$attribute = request(['']);
-
         return redirect('/blogposts/index');
     }
 

@@ -9,5 +9,9 @@ use App\Comment;
 class CommentController extends Controller
 {
     public function store(Comment $comment, Post $post)
-    { }
+    {
+        request([])
+
+        return back();
+    }
 }
