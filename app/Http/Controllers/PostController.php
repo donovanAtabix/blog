@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -23,30 +24,45 @@ class PostController extends Controller
 
     public function store()
     {
-        //dd('exit');
         $attributes = request(['title', 'post']);
         Post::create($attributes + ['owner_id' => auth()->id()]);
+
+        //$attribute = request(['']);
 
         return redirect('/blogposts/index');
     }
 
-    public function update()
+    public function update(Post $post)
     {
-        //
+        request()->validate([
+            'title' => ['required', 'min:1'],
+            'post' => ['required', 'min:1']
+        ]);
+
+        $post->update(request(['title', 'post']));
+
+        return back();
     }
 
-    public function destroy()
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect('/blogposts/index');
     }
 
     public function creatpost()
     {
-        return view('blogposts/createpost');
+        return view('/blogposts/create');
     }
 
     public function show(Post $post)
     {
         return view('/blogposts/show', ['post' => $post]);
+    }
+
+    public function edit(Post $post, Comment $comment)
+    {
+        return view('/blogposts/edit', ['post' => $post, 'comment' => $comment]);
     }
 }

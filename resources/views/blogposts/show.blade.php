@@ -14,7 +14,7 @@
 @section('body')
 
     <div>
-        <h3><a href="">Edit Post</a></h3>
+        <h3><a href="/blogposts/{{$post->id}}/edit">Edit Post</a></h3>
     </div>
 
     <div>
