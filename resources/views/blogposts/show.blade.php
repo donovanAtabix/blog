@@ -27,7 +27,8 @@
         </ul>
         <div style="margin-bottom: 5mm">
             @foreach ($post->comments as $comment)
-                <li><a href="/blogposts/{{$comment->id}}/edit-comment">{{$comment->comment}}</a></li>
+                <li><a href="/blogposts/{{$comment->id}}/edit-comment">
+                    {{$comment->comment}}</a></li>
             @endforeach
         </div>
     </div>

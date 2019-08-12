@@ -22,9 +22,8 @@ class CommentController extends Controller
 
     public function update(Comment $comment)
     {
-        request()->validate(['comment' => ['required min:5']]);
-
-        $comment->update()->validate(['comment' => ['required min:5']]);
+        request()->validate(['comment' => ['required', 'min:5']]);
+        $comment->update(request(['comment']));
 
         return back();
     }
