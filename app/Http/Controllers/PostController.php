@@ -59,7 +59,6 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        //dd($post->comments);
         return view('/blogposts/show', ['post' => $post, 'comments' => $post->comments]);
     }
 
