@@ -35,4 +35,9 @@ class CommentController extends Controller
 
         return redirect('/blogposts/index');
     }
+
+    public function edit(Comment $comment, Post $post)
+    {
+        return view('/blogposts/edit-comment', ['comment' => $comment, 'post' => $post]);
+    }
 }
