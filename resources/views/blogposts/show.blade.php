@@ -41,7 +41,7 @@
 
             <div>
                 <textarea class="textarea" name="comment"
-                placeholder="Comment">{{old('comment')}}</textarea>
+                placeholder="Comment" required>{{old('comment')}}</textarea>
             </div>
 
             <div>
