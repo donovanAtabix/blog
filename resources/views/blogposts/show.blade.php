@@ -25,6 +25,11 @@
         <ul>
             <li><h3>{{$post->post}}</h3></li>
         </ul>
+        <div style="margin-bottom: 5mm">
+            @foreach ($post->comments as $comment)
+                <li><a href="">{{$comment->comment}}</a></li>
+            @endforeach
+        </div>
     </div>
 
 
