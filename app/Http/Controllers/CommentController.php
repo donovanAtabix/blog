@@ -8,13 +8,14 @@ use App\Comment;
 
 class CommentController extends Controller
 {
-    public function store(Comment $comment, Post $post)
+    public function store(Post $post)
     {
-        $comment = request(['comment']);
-        Comment::create(
-            $comment + ['parrent_id' => auth()->id()] +
-                ['owner_id' => $post->owner_id]
-        );
+        $parameters = request(['comment']);
+        $comment = new Comment($parameters);
+        $comment->post()->associate($post->id);
+        $comment->owner()->associate($post->owner_id);
+        $comment->parrent()->associate(auth()->user()->id);
+        $comment->save();
 
         return back();
     }

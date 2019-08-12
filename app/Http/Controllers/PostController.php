@@ -57,9 +57,9 @@ class PostController extends Controller
         return view('/blogposts/create');
     }
 
-    public function show(Post $post)
+    public function show(Post $post, Comment $comments)
     {
-        return view('/blogposts/show', ['post' => $post]);
+        return view('/blogposts/show', ['post' => $post, 'comment' => $comments]);
     }
 
     public function edit(Post $post, Comment $comment)

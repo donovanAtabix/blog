@@ -18,6 +18,10 @@
     </div>
 
     <div>
+        <h3></h3>
+    </div>
+
+    <div>
         <ul>
             <li><h3>{{$post->post}}</h3></li>
         </ul>
