@@ -13,9 +13,12 @@
 
 @section('body')
 
-    <div>
-        <h3><a href="/blogposts/{{$post->id}}/edit">Edit Post</a></h3>
-    </div>
+    @if (auth()->user()->id === $post->owner_id)
+        <div>
+            <h3><a href="/blogposts/{{$post->id}}/edit">Edit Post</a></h3>
+        </div>
+    @endif
+
 
     <div>
         <h3></h3>

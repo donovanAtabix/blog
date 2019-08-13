@@ -33,9 +33,10 @@ class PostController extends Controller
         return redirect('/blogposts/index');
     }
 
-    public function update(Post $post)
+    public function update(Post $post, Request $request)
     {
-        request()->validate([
+        $this->authorize('update', $post);
+        $request->validate([
             'title' => ['required', 'min:1'],
             'post' => ['required', 'min:1']
         ]);
