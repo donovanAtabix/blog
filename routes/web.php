@@ -42,3 +42,5 @@ Route::get('/blogposts/{comment}/edit-comment', 'CommentController@edit');
 Route::patch('/blogposts/{comment}/edit-comment', 'CommentController@update');
 
 Route::delete('/blogposts/{comment}/edit-comment', 'CommentController@destroy');
+
+Route::delete('/blogposts/{comment}/show', 'CommentController@destroy');

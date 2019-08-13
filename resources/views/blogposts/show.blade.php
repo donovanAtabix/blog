@@ -28,10 +28,27 @@
         <ul>
             <li><h3>{{$post->post}}</h3></li>
         </ul>
-        <div style="margin-bottom: 5mm">
+        <div>
             @foreach ($post->comments as $comment)
-                <li><a href="/blogposts/{{$comment->id}}/edit-comment">
-                    {{$comment->comment}}</a></li>
+               <ul style="margin-inline-start: 10mm">
+                   <li>
+                       {{$comment->comment}}
+                       @if (auth()->user()->id === $comment->owner_id ||
+                            auth()->user()->id === $comment->parrent_id)
+                        <a href="/blogposts/{{$comment->id}}/edit-comment"><h5>edit</h5></a>
+
+                        <form method="POST" action="/blogposts/{{$comment->id}}/show">
+                            {{method_field('DELETE')}}
+                            {{ csrf_field() }}
+
+                            <button class="button is-link" type="submit" style="">
+                                Delete comment
+                            </button>
+                        </form>
+                       @endif
+
+                    </li>
+                </ul>
             @endforeach
         </div>
     </div>

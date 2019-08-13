@@ -20,9 +20,10 @@ class CommentController extends Controller
         return back();
     }
 
-    public function update(Comment $comment)
+    public function update(Comment $comment, Request $request)
     {
-        request()->validate(['comment' => ['required', 'min:5']]);
+        $this->authorize('update', $comment);
+        $request->validate(['comment' => ['required', 'min:5']]);
         $comment->update(request(['comment']));
 
         return back();
