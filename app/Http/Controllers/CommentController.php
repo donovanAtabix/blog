@@ -31,6 +31,7 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
+        $this->authorize('delete', $comment);
         $comment->delete();
 
         return redirect('/blogposts/index');
@@ -38,6 +39,7 @@ class CommentController extends Controller
 
     public function edit(Comment $comment, Post $post)
     {
+        $this->authorize('update', $comment);
         return view('/blogposts/edit-comment', ['comment' => $comment, 'post' => $post]);
     }
 }

@@ -48,6 +48,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        $this->authorize('delete', $post);
         $post->delete();
 
         return redirect('/blogposts/index');
@@ -65,6 +66,7 @@ class PostController extends Controller
 
     public function edit(Post $post, Comment $comment)
     {
+        $this->authorize('update', $post);
         return view('/blogposts/edit', ['post' => $post, 'comment' => $comment]);
     }
 }

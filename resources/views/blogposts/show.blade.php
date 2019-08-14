@@ -33,11 +33,13 @@
                <ul style="margin-inline-start: 10mm">
                    <li>
                        {{$comment->comment}}
+                        @if (auth()->user()->id === $comment->parrent_id)
+                            <a href="/blogposts/{{$comment->id}}/edit-comment"><h5>edit</h5></a>
+                        @endif
+
                        @if (auth()->user()->id === $comment->owner_id ||
                             auth()->user()->id === $comment->parrent_id)
-                        <a href="/blogposts/{{$comment->id}}/edit-comment"><h5>edit</h5></a>
-
-                        <form method="POST" action="/blogposts/{{$comment->id}}/show">
+                            <form method="POST" action="/blogposts/{{$comment->id}}/show">
                             {{method_field('DELETE')}}
                             {{ csrf_field() }}
 

@@ -33,16 +33,4 @@ class PostPolicy
     {
         return $user->id == $post->owner_id;
     }
-
-    /**
-     * Determine whether the user can permanently delete the post.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Post  $post
-     * @return mixed
-     */
-    public function forceDelete(User $user, Post $post)
-    {
-        $user->id == $post->owner_id;
-    }
 }
