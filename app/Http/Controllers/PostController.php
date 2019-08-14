@@ -30,7 +30,7 @@ class PostController extends Controller
         $post->user()->associate(auth()->user());
         $post->save();
 
-        return redirect('/blogposts/index');
+        return redirect('/blogposts');
     }
 
     public function update(Post $post, Request $request)
@@ -51,10 +51,10 @@ class PostController extends Controller
         $this->authorize('delete', $post);
         $post->delete();
 
-        return redirect('/blogposts/index');
+        return redirect('/blogposts');
     }
 
-    public function creatpost()
+    public function createpost()
     {
         return view('/blogposts/create');
     }

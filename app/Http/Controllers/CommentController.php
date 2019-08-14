@@ -34,7 +34,7 @@ class CommentController extends Controller
         $this->authorize('delete', $comment);
         $comment->delete();
 
-        return redirect('/blogposts/index');
+        return redirect('/blogposts');
     }
 
     public function edit(Comment $comment, Post $post)

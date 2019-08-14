@@ -43,7 +43,7 @@
         <nav>
             <ul class="topnav">
                 <li class="topnav"><a href="">Home</a></li>
-                <li class="topnav"><a href="/blogposts/index">Posts</a></li>
+                <li class="topnav"><a href="/blogposts">Posts</a></li>
                 <li class="topnav"><a href="">Avatar</a></li>
             </ul>
         </nav>
