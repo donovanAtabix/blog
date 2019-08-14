@@ -23,12 +23,12 @@
         </div>
 
         <div>
-            <label class="label" for="post" style="margin-top: ">Post description</label>
+            <label class="label" for="description" style="margin-top: ">Post description</label>
         </div>
 
         <div>
-            <textarea class="textarea" name="post" placeholder="Give a post"
-            style="margin-top:2mm" required>{{$post->post}}</textarea>
+            <textarea class="textarea" name="description" placeholder="Give a post"
+            style="margin-top:2mm" required>{{$post->description}}</textarea>
         </div>
 
         <div>

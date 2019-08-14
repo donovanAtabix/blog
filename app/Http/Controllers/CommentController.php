@@ -10,11 +10,11 @@ class CommentController extends Controller
 {
     public function store(Post $post)
     {
-        $parameters = request()->validate(['comment' => ['required', 'min:5']]);
+        $parameters = request()->validate(['description' => ['required', 'min:5']]);
         $comment = new Comment($parameters);
         $comment->post()->associate($post->id);
         $comment->owner()->associate($post->owner_id);
-        $comment->parrent()->associate(auth()->user()->id);
+        $comment->parent()->associate(auth()->user()->id);
         $comment->save();
 
         return back();
@@ -23,8 +23,8 @@ class CommentController extends Controller
     public function update(Comment $comment, Request $request)
     {
         $this->authorize('update', $comment);
-        $request->validate(['comment' => ['required', 'min:5']]);
-        $comment->update(request(['comment']));
+        $request->validate(['description' => ['required', 'min:5']]);
+        $comment->update(request(['description']));
 
         return back();
     }

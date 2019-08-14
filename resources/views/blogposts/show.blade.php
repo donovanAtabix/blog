@@ -26,13 +26,13 @@
 
     <div>
         <ul>
-            <li><h3>{{$post->post}}</h3></li>
+            <li><h3>{{$post->description}}</h3></li>
         </ul>
         <div>
             @foreach ($post->comments as $comment)
                <ul style="margin-inline-start: 10mm">
                    <li>
-                       {{$comment->comment}}
+                       {{$comment->description}}
                         @can('update', $comment)
                             <a href="/blogposts/{{$comment->id}}/edit-comment"><h5>edit</h5></a>
                         @endcan
@@ -62,8 +62,8 @@
             </div>
 
             <div>
-                <textarea class="textarea" name="comment"
-                placeholder="Comment" required>{{old('comment')}}</textarea>
+                <textarea class="textarea" name="description"
+                placeholder="Comment" required>{{old('description')}}</textarea>
             </div>
 
             <div>

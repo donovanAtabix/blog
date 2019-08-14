@@ -18,7 +18,7 @@
         </div>
 
         <div>
-            <textarea class="textarea" name="post" placeholder="Give a post"
+            <textarea class="textarea" name="description" placeholder="Give a post"
             style="margin-bottom:5mm" required>{{old('description')}}</textarea>
         </div>
 

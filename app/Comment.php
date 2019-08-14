@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillable = ['comment'];
+    protected $fillable = ['description'];
 
     public function owner()
     {
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    public function parrent()
+    public function parent()
     {
-        return $this->belongsTo(User::class, 'parrent_id');
+        return $this->belongsTo(User::class, 'parent_id');
     }
 
     public function post()

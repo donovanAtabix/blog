@@ -14,12 +14,12 @@
         {{ csrf_field() }}
 
         <div>
-            <label class="lable" for="comment">Update comment</label>
+            <label class="lable" for="description">Update comment</label>
         </div>
 
         <div>
-            <textarea class="textarea" name="comment" placeholder="Update your comment"
-            style="" required>{{$comment->comment}}</textarea>
+            <textarea class="textarea" name="description" placeholder="Update your comment"
+            style="" required>{{$comment->description}}</textarea>
 
         <div>
             <button class="button is-link" type="submit" style="margin-top: 5mm">

@@ -24,7 +24,7 @@ class PostController extends Controller
 
     public function store()
     {
-        $attributes = request(['title', 'post']);
+        $attributes = request(['title', 'description']);
 
         $post = new Post($attributes);
         $post->user()->associate(auth()->user());
@@ -38,10 +38,10 @@ class PostController extends Controller
         $this->authorize('update', $post);
         $request->validate([
             'title' => ['required', 'min:1'],
-            'post' => ['required', 'min:1']
+            'description' => ['required', 'min:1']
         ]);
 
-        $post->update(request(['title', 'post']));
+        $post->update(request(['title', 'description']));
 
         return back();
     }

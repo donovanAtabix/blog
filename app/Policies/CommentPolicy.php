@@ -19,7 +19,7 @@ class CommentPolicy
      */
     public function update(User $user, Comment $comment)
     {
-        return $user->id == $comment->parrent_id;
+        return $user->id == $comment->parent_id;
     }
 
     /**
@@ -31,6 +31,6 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
-        return $user->id == $comment->parrent_id || $user->id == $comment->owner_id;
+        return $user->id == $comment->parent_id || $user->id == $comment->owner_id;
     }
 }
