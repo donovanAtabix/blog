@@ -33,12 +33,11 @@
                <ul style="margin-inline-start: 10mm">
                    <li>
                        {{$comment->comment}}
-                        @if (auth()->user()->id === $comment->parrent_id)
+                        @can('update', $comment)
                             <a href="/blogposts/{{$comment->id}}/edit-comment"><h5>edit</h5></a>
-                        @endif
+                        @endcan
 
-                       @if (auth()->user()->id === $comment->owner_id ||
-                            auth()->user()->id === $comment->parrent_id)
+                       @can ('delete', $comment)
                             <form method="POST" action="/blogposts/{{$comment->id}}/show">
                             {{method_field('DELETE')}}
                             {{ csrf_field() }}
@@ -47,7 +46,7 @@
                                 Delete comment
                             </button>
                         </form>
-                       @endif
+                       @endcan
 
                     </li>
                 </ul>
