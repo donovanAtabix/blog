@@ -14,7 +14,7 @@
 
 @foreach ($posts as $post)
     <ul>
-        <li><a href="/blogposts/{{$post->id}}/show">{{$post->title}}</a></li>
+        <li><a href="/blogposts/posts/{{$post->id}}">{{$post->title}}</a></li>
     </ul>
 
 @endforeach

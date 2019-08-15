@@ -9,7 +9,7 @@
 @endsection
 
 @section('body')
-    <form method="POST" action="/blogposts/{{$comment->id}}/edit-comment">
+    <form method="POST" action="/blogposts/comments/{{$comment->id}}">
         {{ method_field('PATCH') }}
         {{ csrf_field() }}
 
@@ -27,7 +27,7 @@
             </button>
     </form>
 
-    <form method="POST" action="/blogposts/{{$comment->id}}/edit-comment">
+    <form method="POST" action="/blogposts/comments/{{$comment->id}}">
     {{ method_field('DELETE')}}
     {{ csrf_field() }}
 

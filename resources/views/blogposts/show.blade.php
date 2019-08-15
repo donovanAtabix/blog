@@ -15,7 +15,7 @@
 
     @if (auth()->user()->id === $post->owner_id)
         <div>
-            <h3><a href="/blogposts/{{$post->id}}/edit">Edit Post</a></h3>
+            <h3><a href="/blogposts/posts/{{$post->id}}/edit">Edit Post</a></h3>
         </div>
     @endif
 
@@ -34,11 +34,11 @@
                    <li>
                        {{$comment->description}}
                         @can('update', $comment)
-                            <a href="/blogposts/{{$comment->id}}/edit-comment"><h5>edit</h5></a>
+                            <a href="/blogposts/comments/{{$comment->id}}"><h5>edit</h5></a>
                         @endcan
 
                        @can ('delete', $comment)
-                            <form method="POST" action="/blogposts/{{$comment->id}}/show">
+                            <form method="POST" action="/blogposts/comments/{{$comment->id}}">
                             {{method_field('DELETE')}}
                             {{ csrf_field() }}
 

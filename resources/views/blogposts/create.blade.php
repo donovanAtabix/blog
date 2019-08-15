@@ -9,7 +9,7 @@
 @endsection
 
 @section('body')
-        <form method="POST" action="/blogposts/create" style="margin-top: 5mm">
+        <form method="POST" action="/blogposts/posts" style="margin-top: 5mm">
         {{ csrf_field()}}
         <div>
             <input class="input" type="text" name="title"

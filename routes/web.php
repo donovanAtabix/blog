@@ -21,26 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/blogposts', 'PostController@index');
 
-Route::get('/blogposts/createpost', 'PostController@createpost');
+Route::get('/blogposts/createpost', 'PostController@createpost')->middleware('auth');
 
-Route::post('/blogposts/create', 'PostController@store');
+Route::post('blogposts/{post}/show', 'CommentController@store')->middleware('auth');
 
-Route::get('/blogposts/{post}/show', 'PostController@show');
 
-Route::post('/blogposts/{post}/comment', 'CommentController@store');
+Route::group(['prefix' => 'blogposts'], function () {
+    Route::get('/blogposts', 'PostController@index')->middleware('guest');
 
-Route::get('/blogposts/{post}/edit', 'PostController@edit');
+    Route::resource('posts', 'PostController')->except(['index'])->middleware('auth');
 
-Route::patch('/blogposts/{post}/edit', 'PostController@update');
-
-Route::delete('/blogposts/{post}/edit', 'PostController@destroy');
-
-Route::post('/blogposts/{post}/show', 'CommentController@store');
-
-Route::get('/blogposts/{comment}/edit-comment', 'CommentController@edit');
-
-Route::patch('/blogposts/{comment}/edit-comment', 'CommentController@update');
-
-Route::delete('/blogposts/{comment}/edit-comment', 'CommentController@destroy');
-
-Route::delete('/blogposts/{comment}/show', 'CommentController@destroy');
+    Route::resource('comments', 'CommentController')->middleware('auth');
+});

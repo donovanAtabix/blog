@@ -10,7 +10,7 @@
 
 @section('body')
 
-    <form method="POST" action="/blogposts/{{$post->id}}/edit" style="margin-top:5mm">
+    <form method="POST" action="/blogposts/posts/{{$post->id}}" style="margin-top:5mm">
         {{method_field('PATCH')}}
         {{ csrf_field() }}
         <div>
@@ -38,7 +38,7 @@
         </div>
     </form>
 
-    <form method="POST" action="/blogposts/{{$post->id}}/edit">
+    <form method="POST" action="/blogposts/posts/{{$post->id}}">
         {{method_field('DELETE')}}
         {{ csrf_field() }}
         <div>
