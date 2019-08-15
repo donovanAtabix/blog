@@ -13,7 +13,6 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        //$posts = Post::where('owner_id', Auth::user()->id)->get();
 
         return view('/blogposts/index', ['posts' => $posts]);
     }
