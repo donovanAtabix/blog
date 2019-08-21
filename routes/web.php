@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::resource('profile', 'ProfileController')->middleware('auth');
+
+Route::get('profile', 'ProfileController@profile')->middleware('auth');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/blogposts', 'PostController@index');
@@ -24,7 +28,6 @@ Route::get('/blogposts', 'PostController@index');
 Route::get('/blogposts/createpost', 'PostController@createpost')->middleware('auth');
 
 Route::post('blogposts/{post}/show', 'CommentController@store')->middleware('auth');
-
 
 Route::group(['prefix' => 'blogposts'], function () {
     Route::get('/blogposts', 'PostController@index')->middleware('guest');

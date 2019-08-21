@@ -13,6 +13,7 @@ class Comment extends Model
         return $this->belongsTo(User::class, 'owner_id');
     }
 
+    // @todo: Probeer deze stap te verwijderen en een "parent" via de post() relation op te halen.
     public function parent()
     {
         return $this->belongsTo(User::class, 'parent_id');

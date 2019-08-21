@@ -14,7 +14,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('/blogposts/index', ['posts' => $posts]);
+        return view('blogposts.index', ['posts' => $posts]);
     }
 
     public function store()
@@ -25,7 +25,7 @@ class PostController extends Controller
         $post->user()->associate(auth()->user());
         $post->save();
 
-        return redirect('/blogposts');
+        return redirect()->route('blogsposts.index');
     }
 
     public function update(Post $post, Request $request)
