@@ -14,6 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $thumb = $this->share();
 
         return view('home', ['thumb' => $thumb]);
