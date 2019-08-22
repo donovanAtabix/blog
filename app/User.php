@@ -29,9 +29,7 @@ class User extends Authenticatable implements HasMedia
             return $file->mimeType === 'image/png' || $file->mimeType === 'image/jpeg'
                 || $file->mimeType == 'image/gif';
         })->registerMediaConversions(function (Media $media) {
-            $this->addMediaConversion('card')->width(368)->height(232)->sharpen(10);
-
-            $this->addMediaConversion('thumb')->width(100)->height(100)->sharpen(10);
+            $this->addMediaConversion('thumb')->width(50)->height(50)->sharpen(10);
         });
     }
 

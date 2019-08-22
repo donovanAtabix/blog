@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Spatie\MediaLibrary\Models\Media;
 
-class profileController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -48,12 +48,6 @@ class profileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $avatars = auth()->user()->getMedia();
-
-        return view('show-media', ['avatars' => $avatars]);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -93,8 +87,13 @@ class profileController extends Controller
 
     public function profile(User $profile)
     {
-        $avatars = auth()->user()->getMedia('avatar');
+        $media = auth()->user()->getFirstMediaUrl('avatar');
+        $thumb = auth()->user()->getFirstMediaUrl('avatar', 'thumb');
 
-        return view('profile', ['avatars' => $avatars], ['profile' => $profile]);
+        return view('profile', [
+            'profile' => $profile,
+            'media' => $media,
+            'thumb' => $thumb,
+        ]);
     }
 }

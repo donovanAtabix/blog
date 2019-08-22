@@ -25,7 +25,7 @@ class PostController extends Controller
         $post->user()->associate(auth()->user());
         $post->save();
 
-        return redirect()->route('blogsposts.index');
+        return redirect('/blogposts');
     }
 
     public function update(Post $post, Request $request)

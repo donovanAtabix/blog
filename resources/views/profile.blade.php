@@ -29,27 +29,25 @@
 
 <div class="input-group-prepend" style="margin-left: 23mm">
     <div class="card-columns">
-        @foreach ($avatars as $avatar)
-        <div class="card">
-            {{$avatar}}
-            <div class="card-body">
-                <h5 class="card-title">Card title that wraps to a new line</h5>
-                <p class="card-text">
-                    This is a longer card with supporting text below as a natural lead-in
-                    to additional content. This content is a little bit longer.</p>
-            </div>
-
-        <div>
-            <form action="/profile/{{$profile}}" method="POST">
-                {{ csrf_field() }}
-                {{method_field("DELETE")}}
-                <div>
-                    <button class="button is-link">Delete Avatar image</button>
+            <div class="card">
+                <img src="{{$media}}" alt="Avatar">
+                <div class="card-body">
+                    <h5 class="card-title">Card title that wraps to a new line</h5>
+                    <p class="card-text">
+                        This is a longer card with supporting text below as a natural lead-in
+                        to additional content. This content is a little bit longer.</p>
                 </div>
-            </form>
 
-        </div>
-            @endforeach
+            <div>
+                <form action="/profile/{{$profile}}" method="POST">
+                    {{ csrf_field() }}
+                    {{method_field("DELETE")}}
+                    <div>
+                        <button class="button is-link">Delete Avatar image</button>
+                    </div>
+                </form>
+
+            </div>
         </div>
     </div>
 
