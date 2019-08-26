@@ -36,3 +36,10 @@ Route::group(['prefix' => 'blogposts'], function () {
 
     Route::resource('comments', 'CommentController')->middleware('auth');
 });
+
+View::composer('*', function ($view) {
+
+    if (auth()->user()) {
+        $view->with(['thumb' => auth()->user()->getFirstMediaUrl('avatar', 'thumb')]);
+    }
+});

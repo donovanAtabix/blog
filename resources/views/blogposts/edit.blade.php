@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/app')
 
 @section('title')
     Edit {{$post->title}} Post
@@ -8,7 +8,7 @@
     <h1 class="title">Edit {{$post->title}} Post</h1>
 @endsection
 
-@section('body')
+@section('content')
 
     <form method="POST" action="/blogposts/posts/{{$post->id}}" style="margin-top:5mm">
         {{method_field('PATCH')}}

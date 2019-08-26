@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/app')
 
 @section('title')
     create post
@@ -8,7 +8,7 @@
     <h1 class="title">Creat a post</h1>
 @endsection
 
-@section('body')
+@section('content')
         <form method="POST" action="/blogposts/posts" style="margin-top: 5mm">
         {{ csrf_field()}}
         <div>

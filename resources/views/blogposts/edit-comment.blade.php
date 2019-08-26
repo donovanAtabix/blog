@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/app')
 
 @section('title')
     Edit comment
@@ -8,7 +8,7 @@
     <h1>Edit Post comment</h1>
 @endsection
 
-@section('body')
+@section('content')
     <form method="POST" action="/blogposts/comments/{{$comment->id}}">
         {{ method_field('PATCH') }}
         {{ csrf_field() }}

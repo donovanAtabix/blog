@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/app')
 
 @section('title')
 
@@ -8,7 +8,7 @@
     <h1 class="title">Blog posts</h1>
 @endsection
 
-@section('body')
+@section('content')
 
 <div style="margin-bottom: 5mm"><a href="/blogposts/createpost">Create post</a></div>
 

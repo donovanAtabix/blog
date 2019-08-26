@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/app')
 
 @section('title')
     Blog post
@@ -11,7 +11,7 @@
     </div>
 @endsection
 
-@section('body')
+@section('content')
 
     @if (auth()->user()->id === $post->owner_id)
         <div>
