@@ -17,19 +17,51 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .topnav{
+            overflow: hidden;
+        }
+
+        .topnav li {
+            float: left;
+            text-align: center;
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .topnav a{
+
+        }
+
+    </style>
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Random post
+                    Logo
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+
+            <ul class="topnav">
+                <li class="topnav"><a href="">Home</a></li>
+                <li class="topnav"><a href="/blogposts">Posts</a></li>
+                <li class="topnav"><a href="/profile">Profile</a></li>
+            </ul>
+
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
