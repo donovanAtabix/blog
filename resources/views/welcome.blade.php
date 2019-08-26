@@ -85,7 +85,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="">Links to blog</a>
+                    <a href="/blogposts">Posts</a>
+                    <a href="/profile">Profile</a>
 
                 </div>
             </div>
