@@ -9,6 +9,8 @@
 @endsection
 
 @section('content')
+
+    <div class="container">
         <form method="POST" action="/blogposts/posts" style="margin-top: 5mm">
         {{ csrf_field()}}
         <div>
@@ -29,4 +31,5 @@
         </div>
 
     </form>
+    </div>
 @endsection

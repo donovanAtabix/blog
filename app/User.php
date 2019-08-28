@@ -24,6 +24,8 @@ class User extends Authenticatable implements HasMedia
         'name', 'email', 'password', 'avatar_name', 'display_name',
     ];
 
+    protected $avatarName = 0;
+
     public function registerMediaCollections()
     {
         $this->addMediaCollection('avatar')->acceptsFile(function (File $file) {
@@ -65,5 +67,25 @@ class User extends Authenticatable implements HasMedia
     public function avatar()
     {
         return $this->hasOne(Media::class, 'avatar_id');
+    }
+
+    public function displayName()
+    {
+        if ($this->select == $this->avatarName) {
+            $user = auth()->user();
+            $user->display_name = auth()->user()->avatar_name;
+            $user->save();
+
+            return;
+        }
+
+        $this->firstName();
+    }
+
+    public function firstName()
+    {
+        $user = auth()->user();
+        $user->display_name = auth()->user()->name;
+        $user->save();
     }
 }

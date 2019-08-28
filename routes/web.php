@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::resource('profile', 'ProfileController')->middleware('auth');
 
+Route::resource('users', 'UserController')->only(['update']);
+
 Route::get('profile', 'ProfileController@profile')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

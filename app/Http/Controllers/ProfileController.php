@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\DisplayName;
 use Spatie\MediaLibrary\Models\Media;
 
 class ProfileController extends Controller
@@ -88,6 +89,10 @@ class ProfileController extends Controller
 
     public function profile(User $profile)
     {
+        //dd($displayName);
+        $select = auth()->user()->select;
+        $firstName = auth()->user()->name;
+        $avatarName = auth()->user()->avatar_name;
         $media = auth()->user()->getFirstMediaUrl('avatar');
         $thumb = auth()->user()->getFirstMediaUrl('avatar', 'thumb');
 
@@ -95,6 +100,9 @@ class ProfileController extends Controller
             'profile' => $profile,
             'media' => $media,
             'thumb' => $thumb,
+            'select' => $select,
+            'firstName' => $firstName,
+            'avatarName' => $avatarName,
         ]);
     }
 }
