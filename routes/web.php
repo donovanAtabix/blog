@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::resource('profile', 'ProfileController')->middleware('auth');
 
-Route::resource('users', 'UserController')->only(['update']);
+Route::resource('users', 'UserController')->only(['update'])->middleware('auth');
 
 Route::get('profile', 'ProfileController@profile')->middleware('auth');
 
