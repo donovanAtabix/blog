@@ -24,7 +24,7 @@ class User extends Authenticatable implements HasMedia
         'name', 'email', 'password', 'avatar_name', 'display_name',
     ];
 
-    protected $avatarName = 0;
+    protected $avatarName = false;
 
     public function registerMediaCollections()
     {
