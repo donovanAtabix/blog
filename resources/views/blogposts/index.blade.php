@@ -10,11 +10,11 @@
 
 @section('content')
 <div class="container">
-    <div style="margin-bottom: 5mm"><a href="/blogposts/createpost">Create post</a></div>
+    <div style="margin-bottom: 5mm"><a href="/blog/createpost">Create post</a></div>
 
     @foreach ($posts as $post)
     <ul>
-        <li><a href="/blogposts/posts/{{$post->id}}">{{$post->title}}</a></li>
+        <li><a href="/blog/posts/{{$post->id}}">{{$post->title}}</a></li>
     </ul>
 
     @endforeach

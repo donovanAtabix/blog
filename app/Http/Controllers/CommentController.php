@@ -22,18 +22,20 @@ class CommentController extends Controller
     public function update(Comment $comment, Request $request)
     {
         $this->authorize('update', $comment);
+        $postUrl = '/blog/posts/' . $comment->post()->get()->first()->id;
         $request->validate(['description' => ['required', 'min:5']]);
         $comment->update(request(['description']));
 
-        return back();
+        return redirect($postUrl);
     }
 
     public function destroy(Comment $comment)
     {
         $this->authorize('delete', $comment);
+        $postUrl = '/blog/posts/' . $comment->post()->get()->first()->id;
         $comment->delete();
 
-        return redirect('/blogposts');
+        return redirect($postUrl);
     }
 
     public function show(Comment $comment, Post $post)

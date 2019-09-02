@@ -8,14 +8,14 @@ Blog post
 
 <div class="container">
     <h1 class="title"></h1>
-    <h1 class="title"><img src="{{$postUserThumb}}" alt="Avatar" class="rounded-circle"> 
+    <h1 class="title"><img src="{{$postUserThumb}}" alt="Avatar" class="rounded-circle">
     {{$postUserName}} post: {{$post->title}} </h1>
 </div>
 
 <div class="container">
     @if (auth()->user()->id === $post->user_id)
     <div>
-        <h3><a href="/blogposts/posts/{{$post->id}}/edit">Edit Post</a></h3>
+        <h3><a href="/blog/posts/{{$post->id}}/edit">Edit Post</a></h3>
     </div>
     @endif
 
@@ -29,25 +29,27 @@ Blog post
             <li><h3>{{$post->description}}</h3></li>
         </ul>
             <div>
-                @foreach ($users as $user)
-                    @foreach($user->comments as $comment)
-                        @if($comment->post_id === $post->id)
+
+                @foreach($comments as $comment)
+                    @foreach ($users as $user)
+                        @if($comment->user_id === $user->id)
                             <ul style="margin-inline-start: 10mm">
                                 <ul>
                                     <img src="{{$user->getFirstMediaUrl('avatar', 'thumb')}}" alt="Avatar" class="rounded-circle">
                                      {{$user->display_name}} comment: {{$comment->description}}
                                     @can('update', $comment)
-                                        <a href="/blogposts/comments/{{$comment->id}}"><h5>edit</h5></a>
+                                        <a href="/blog/comments/{{$comment->id}}"><h5>edit</h5></a>
                                     @endcan
 
                                     @can ('delete', $comment)
-                                        <form method="POST" action="/blogposts/comments/{{$comment->id}}">
+                                        <form method="POST" action="/blog/comments/{{$comment->id}}">
                                             {{method_field('DELETE')}}
                                             {{ csrf_field() }}
-
-                                            <button class="button is-link" type="submit" style="">
-                                                Delete comment
-                                            </button>
+                                            <div style="margin-bottom: 2mm">
+                                                <button class="button is-link" type="submit" style="">
+                                                    Delete comment
+                                                </button>
+                                            </div>
                                         </form>
                                     @endcan
                                 </ul>
@@ -59,7 +61,7 @@ Blog post
     </div>
 
 
-    <form class="box" method="POST" action="/blogposts/{{$post->id}}/show">
+    <form class="box" method="POST" action="/blog/{{$post->id}}/show">
         {{ csrf_field() }}
         <div>
             <label class="label" for="comment">Add Comment</label>

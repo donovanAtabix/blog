@@ -15,7 +15,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('blogposts.index', ['posts' => $posts]);
+        return view('/blogposts.index', ['posts' => $posts]);
     }
 
     public function store()
@@ -26,12 +26,13 @@ class PostController extends Controller
         $post->user()->associate(auth()->user());
         $post->save();
 
-        return redirect('/blogposts');
+        return redirect('/blog');
     }
 
     public function update(Post $post, Request $request)
     {
         $this->authorize('update', $post);
+        $postUrl = '/blog/posts/' . $post->id;
         $request->validate([
             'title' => ['required', 'min:1'],
             'description' => ['required', 'min:1']
@@ -39,7 +40,7 @@ class PostController extends Controller
 
         $post->update(request(['title', 'description']));
 
-        return back();
+        return redirect($postUrl);
     }
 
     public function destroy(Post $post)
@@ -47,7 +48,7 @@ class PostController extends Controller
         $this->authorize('delete', $post);
         $post->delete();
 
-        return redirect('/blogposts');
+        return redirect('/blog');
     }
 
     public function createpost()
@@ -59,6 +60,8 @@ class PostController extends Controller
     {
         $users = User::get();
 
+        $comments = $post->comments;
+
         foreach ($users as $user) {
             if ($post->user_id == $user->id) {
                 $postUserName = $user->display_name;
@@ -67,9 +70,11 @@ class PostController extends Controller
         }
 
         return view('/blogposts/show', [
-            'post' => $post, 'users' => $users,
+            'post' => $post,
+            'users' => $users,
             'postUserName' => $postUserName,
             'postUserThumb' => $postUserThumb,
+            'comments' => $comments,
         ]);
     }
 
