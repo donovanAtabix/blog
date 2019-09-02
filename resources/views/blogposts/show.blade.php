@@ -13,11 +13,11 @@ Blog post
 </div>
 
 <div class="container">
-    @if (auth()->user()->id === $post->user_id)
+    @can ('update', $post)
     <div>
         <h3><a href="/blog/posts/{{$post->id}}/edit">Edit Post</a></h3>
     </div>
-    @endif
+    @endcan
 
 
     <div>
