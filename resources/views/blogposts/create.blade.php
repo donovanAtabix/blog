@@ -14,14 +14,14 @@
         <form method="POST" action="/blogposts/posts" style="margin-top: 5mm">
         {{ csrf_field()}}
         <div>
-            <input class="input" type="text" name="title"
+            <input class="form-control" type="text" name="title"
             placeholder="Blogpost title"style="margin-bottom: 5mm"
             value="{{old('title')}}">
         </div>
 
         <div>
-            <textarea class="textarea" name="description" placeholder="Give a post"
-            style="margin-bottom:5mm" required>{{old('description')}}</textarea>
+            <textarea class="form-control" name="description" placeholder="Give a post"
+            style="margin-bottom:5mm" rows="6" required>{{old('description')}}</textarea>
         </div>
 
         <div>

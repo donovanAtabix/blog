@@ -13,8 +13,7 @@ class CommentController extends Controller
         $parameters = request()->validate(['description' => ['required', 'min:5']]);
         $comment = new Comment($parameters);
         $comment->post()->associate($post->id);
-        $comment->owner()->associate($post->owner_id);
-        $comment->parent()->associate(auth()->user()->id);
+        $comment->user()->associate(auth()->user()->id);
         $comment->save();
 
         return back();
@@ -40,6 +39,8 @@ class CommentController extends Controller
     public function show(Comment $comment, Post $post)
     {
         $this->authorize('update', $comment);
-        return view('/blogposts/edit-comment', ['comment' => $comment, 'post' => $post]);
+        return view('/blogposts/edit-comment', [
+            'comment' => $comment, 'post' => $post,
+        ]);
     }
 }

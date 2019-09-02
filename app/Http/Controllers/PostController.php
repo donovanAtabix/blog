@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -56,7 +57,20 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return view('/blogposts/show', ['post' => $post, 'comments' => $post->comments]);
+        $users = User::get();
+
+        foreach ($users as $user) {
+            if ($post->user_id == $user->id) {
+                $postUserName = $user->display_name;
+                $postUserThumb = $user->getFirstMediaUrl('avatar', 'thumb');
+            }
+        }
+
+        return view('/blogposts/show', [
+            'post' => $post, 'users' => $users,
+            'postUserName' => $postUserName,
+            'postUserThumb' => $postUserThumb,
+        ]);
     }
 
     public function edit(Post $post, Comment $comment)
