@@ -17,11 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('profile', 'ProfileController')->only(['store', 'destroy',])->middleware('auth');
+Route::resource('profile', 'ProfileController')->only(['store', 'destroy', 'index'])->middleware('auth');
 
 Route::resource('users', 'UserController')->only(['update'])->middleware('auth');
-
-Route::get('profile', 'ProfileController@profile')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 

@@ -9,6 +9,29 @@ use App\User;
 class ProfileController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(User $profile)
+    {
+        $select = auth()->user()->select;
+        $firstName = auth()->user()->name;
+        $avatarName = auth()->user()->avatar_name;
+        $media = auth()->user()->getFirstMediaUrl('avatar');
+        $thumb = auth()->user()->getFirstMediaUrl('avatar', 'thumb');
+
+        return view('profile', [
+            'profile' => $profile,
+            'media' => $media,
+            'thumb' => $thumb,
+            'select' => $select,
+            'firstName' => $firstName,
+            'avatarName' => $avatarName,
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -28,28 +51,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         auth()->user()->clearMediaCollection('avatar');
 
         return back();
-    }
-
-    public function profile(User $profile)
-    {
-        $select = auth()->user()->select;
-        $firstName = auth()->user()->name;
-        $avatarName = auth()->user()->avatar_name;
-        $media = auth()->user()->getFirstMediaUrl('avatar');
-        $thumb = auth()->user()->getFirstMediaUrl('avatar', 'thumb');
-
-        return view('profile', [
-            'profile' => $profile,
-            'media' => $media,
-            'thumb' => $thumb,
-            'select' => $select,
-            'firstName' => $firstName,
-            'avatarName' => $avatarName,
-        ]);
     }
 }
