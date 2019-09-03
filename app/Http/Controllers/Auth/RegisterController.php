@@ -74,6 +74,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
+        $user->addMedia('/Users/donovan/Development/http/app/blog/storage/app/demo/image-avatar.png')
+            ->preservingOriginal()->toMediaCollection('avatar');
+
         Mail::to($data['email'])->send(new RegistrateMail($user));
 
         return $user;
