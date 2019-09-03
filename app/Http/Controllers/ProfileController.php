@@ -42,7 +42,7 @@ class ProfileController extends Controller
         auth()->user()->clearMediaCollection('avatar');
         auth()->user()->addMedia($request->profile)->preservingOriginal()->toMediaCollection('avatar');
 
-        return back();
+        return redirect()->back();
     }
 
     /**
@@ -55,6 +55,6 @@ class ProfileController extends Controller
     {
         auth()->user()->clearMediaCollection('avatar');
 
-        return back();
+        return redirect()->back();
     }
 }

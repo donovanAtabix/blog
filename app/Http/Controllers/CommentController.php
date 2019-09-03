@@ -10,13 +10,14 @@ class CommentController extends Controller
 {
     public function store(Post $post)
     {
+        $this->authorize('store', $post);
         $parameters = request()->validate(['description' => ['required', 'min:5']]);
         $comment = new Comment($parameters);
         $comment->post()->associate($post->id);
         $comment->user()->associate(auth()->user()->id);
         $comment->save();
 
-        return back();
+        return redirect()->back();
     }
 
     public function update(Comment $comment, Request $request)
