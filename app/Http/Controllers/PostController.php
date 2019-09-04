@@ -10,12 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    // index, create, store, show, edit, update, delete, destroy
 
     public function index()
     {
         $posts = Post::all();
 
-        return view('/blogposts.index', ['posts' => $posts]);
+        return view('/blogposts.index', ['posts' => $posts]); // Dit kan niet, gebruik inderdaad punten, maar dan mag je geen slashes meer gebruiken gezien het de alias nodig heeft en niet het pad
     }
 
     public function store()
@@ -26,14 +27,14 @@ class PostController extends Controller
         $post->user()->associate(auth()->user());
         $post->save();
 
-        return redirect('/blog');
+        return redirect('/blog'); // gebruik route() helper
     }
 
     public function update(Post $post, Request $request)
     {
         $this->authorize('update', $post);
-        $postUrl = '/blog/posts/' . $post->id;
-        $request->validate([
+        $postUrl = '/blog/posts/' . $post->id; // route() helper met route names ipv paths
+        $request->validate([ // Move to a Request class
             'title' => ['required', 'min:1'],
             'description' => ['required', 'min:1']
         ]);
@@ -64,8 +65,8 @@ class PostController extends Controller
 
         foreach ($users as $user) {
             if ($post->user_id == $user->id) {
-                $postUserName = $user->display_name;
-                $postUserThumb = $user->getFirstMediaUrl('avatar', 'thumb');
+                $postUserName = $user->display_name; // Accessors & Mutators
+                $postUserThumb = $user->getFirstMediaUrl('avatar', 'thumb'); // Accessors & Mutators
             }
         }
 

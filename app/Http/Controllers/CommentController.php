@@ -25,7 +25,7 @@ class CommentController extends Controller
         $this->authorize('update', $comment);
         $postUrl = '/blog/posts/' . $comment->post()->get()->first()->id;
         $request->validate(['description' => ['required', 'min:5']]);
-        $comment->update(request(['description']));
+        $comment->update(request(['description'])); // Volgens mij kan dit niet werken; kijk even goed naar request() helper
 
         return redirect($postUrl);
     }

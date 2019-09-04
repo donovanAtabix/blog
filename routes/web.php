@@ -36,6 +36,7 @@ Route::group(['prefix' => 'blog'], function () {
     Route::get('', 'PostController@index');
 });
 
+// Dit hoort in de view service provider
 View::composer('*', function ($view) {
 
     if (auth()->user()) {

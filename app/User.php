@@ -69,7 +69,7 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(Media::class, 'avatar_id');
     }
 
-    public function displayName()
+    public function displayName() // Accessor & Mutators
     {
         if ($this->select == $this->avatarName) {
             $user = auth()->user();
