@@ -10,13 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
-    // index, create, store, show, edit, update, delete, destroy
-
     public function index()
     {
         $posts = Post::all();
 
-        return view('/blogposts.index', ['posts' => $posts]); // Dit kan niet, gebruik inderdaad punten, maar dan mag je geen slashes meer gebruiken gezien het de alias nodig heeft en niet het pad
+        return view('blogposts.index', ['posts' => $posts]);
     }
 
     public function store()
@@ -27,34 +25,12 @@ class PostController extends Controller
         $post->user()->associate(auth()->user());
         $post->save();
 
-        return redirect('/blog'); // gebruik route() helper
+        return redirect()->route('blog');
     }
 
-    public function update(Post $post, Request $request)
+    public function create()
     {
-        $this->authorize('update', $post);
-        $postUrl = '/blog/posts/' . $post->id; // route() helper met route names ipv paths
-        $request->validate([ // Move to a Request class
-            'title' => ['required', 'min:1'],
-            'description' => ['required', 'min:1']
-        ]);
-
-        $post->update(request(['title', 'description']));
-
-        return redirect($postUrl);
-    }
-
-    public function destroy(Post $post)
-    {
-        $this->authorize('delete', $post);
-        $post->delete();
-
-        return redirect('/blog');
-    }
-
-    public function createpost()
-    {
-        return view('/blogposts/create');
+        return view('blogposts.create');
     }
 
     public function show(Post $post)
@@ -63,14 +39,11 @@ class PostController extends Controller
 
         $comments = $post->comments;
 
-        foreach ($users as $user) {
-            if ($post->user_id == $user->id) {
-                $postUserName = $user->displayName(); // Accessors & Mutators
-                $postUserThumb = $user->getFirstMediaUrl('avatar', 'thumb'); // Accessors & Mutators
-            }
-        }
+        $postUserThumb = $post->user()->get()->first()->getAvatarThumb();
+        $postUserName = $post->user()->get()->first()->displayName();
+        $postUserThumb = $post->user()->get()->first()->getAvatarThumb();
 
-        return view('/blogposts/show', [
+        return view('blogposts.show', [
             'post' => $post,
             'users' => $users,
             'postUserName' => $postUserName,
@@ -82,6 +55,27 @@ class PostController extends Controller
     public function edit(Post $post, Comment $comment)
     {
         $this->authorize('update', $post);
-        return view('/blogposts/edit', ['post' => $post, 'comment' => $comment]);
+        return view('blogposts.edit', ['post' => $post, 'comment' => $comment]);
+    }
+
+    public function update(Post $post, Request $request)
+    {
+        $this->authorize('update', $post);
+        $request->validate([ // Move to a Request class
+            'title' => ['required', 'min:1'],
+            'description' => ['required', 'min:1']
+        ]);
+
+        $post->update(request(['title', 'description']));
+
+        return redirect()->route('posts.update', $post->id);
+    }
+
+    public function destroy(Post $post)
+    {
+        $this->authorize('delete', $post);
+        $post->delete();
+
+        return redirect()->route('blog');
     }
 }

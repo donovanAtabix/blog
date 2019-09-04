@@ -57,8 +57,7 @@
 
 
             <ul class="topnav">
-                <li class="topnav"><a href="">Home</a></li>
-                <li class="topnav"><a href="/blog">Posts</a></li>
+                <li class="topnav"><a href="/blog">Home</a></li>
                 <li class="topnav"><a href="/profile">Profile</a></li>
             </ul>
 

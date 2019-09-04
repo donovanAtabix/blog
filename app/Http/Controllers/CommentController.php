@@ -20,30 +20,28 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
+    public function show(Comment $comment, Post $post)
+    {
+        $this->authorize('update', $comment);
+        return view('blogposts.edit-comment', [
+            'comment' => $comment, 'post' => $post,
+        ]);
+    }
+
     public function update(Comment $comment, Request $request)
     {
         $this->authorize('update', $comment);
-        $postUrl = '/blog/posts/' . $comment->post()->get()->first()->id;
         $request->validate(['description' => ['required', 'min:5']]);
         $comment->update(request(['description']));
 
-        return redirect($postUrl);
+        return redirect()->route('posts.update', $comment->post()->get()->first()->id);
     }
 
     public function destroy(Comment $comment)
     {
         $this->authorize('delete', $comment);
-        $postUrl = '/blog/posts/' . $comment->post()->get()->first()->id;
         $comment->delete();
 
-        return redirect($postUrl);
-    }
-
-    public function show(Comment $comment, Post $post)
-    {
-        $this->authorize('update', $comment);
-        return view('/blogposts/edit-comment', [
-            'comment' => $comment, 'post' => $post,
-        ]);
+        return redirect()->route('posts.update', $comment->post()->get()->first()->id);
     }
 }

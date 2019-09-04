@@ -31,7 +31,7 @@ Route::group(['prefix' => 'blog'], function () {
 
     Route::post('{post}/show', 'CommentController@store')->middleware('auth');
 
-    Route::get('/createpost', 'PostController@createpost')->middleware('auth');
+    Route::get('/createpost', 'PostController@create')->middleware('auth');
 
     Route::get('', 'PostController@index');
 });

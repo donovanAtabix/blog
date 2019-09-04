@@ -86,4 +86,9 @@ class User extends Authenticatable implements HasMedia
         }
         return $this->getUserName();
     }
+
+    public function getAvatarThumb()
+    {
+        return $this->getFirstMediaUrl('avatar', 'thumb');
+    }
 }
