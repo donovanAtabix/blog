@@ -86,7 +86,7 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <img src="{{$thumb}}" alt="Avatar" class="rounded-circle">
-                                {{ auth()->user()->display_name }} <span class="caret"></span>
+                                {{ auth()->user()->displayName()}} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

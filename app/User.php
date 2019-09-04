@@ -21,7 +21,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar_name', 'display_name',
+        'name', 'email', 'password', 'avatar_name',
     ];
 
     protected $avatarName = false;
@@ -69,23 +69,21 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(Media::class, 'avatar_id');
     }
 
-    public function displayName() // Accessor & Mutators
+    public function getUserName()
     {
-        if ($this->select == $this->avatarName) {
-            $user = auth()->user();
-            $user->display_name = auth()->user()->avatar_name;
-            $user->save();
-
-            return;
-        }
-
-        $this->firstName();
+        return $this->name;
     }
 
-    public function firstName()
+    public function getUserAvatarName()
     {
-        $user = auth()->user();
-        $user->display_name = auth()->user()->name;
-        $user->save();
+        return $this->avatar_name;
+    }
+
+    public function displayName()
+    {
+        if ($this->select == false) {
+            return $this->getUserAvatarName();
+        }
+        return $this->getUserName();
     }
 }

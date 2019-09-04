@@ -36,7 +36,7 @@ Blog post
                             <ul style="margin-inline-start: 10mm">
                                 <ul>
                                     <img src="{{$user->getFirstMediaUrl('avatar', 'thumb')}}" alt="Avatar" class="rounded-circle">
-                                     {{$user->display_name}} comment: {{$comment->description}}
+                                     {{$user->displayName()}} comment: {{$comment->description}}
                                     @can('update', $comment)
                                         <a href="/blog/comments/{{$comment->id}}"><h5>edit</h5></a>
                                     @endcan

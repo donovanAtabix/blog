@@ -20,8 +20,6 @@ class UserController extends Controller
         $user->select = $request->display_name;
         $user->save();
 
-        auth()->user()->displayName();
-
         return back();
     }
 }

@@ -65,7 +65,7 @@ class PostController extends Controller
 
         foreach ($users as $user) {
             if ($post->user_id == $user->id) {
-                $postUserName = $user->display_name; // Accessors & Mutators
+                $postUserName = $user->displayName(); // Accessors & Mutators
                 $postUserThumb = $user->getFirstMediaUrl('avatar', 'thumb'); // Accessors & Mutators
             }
         }
