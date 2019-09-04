@@ -177,7 +177,7 @@ return [
 
         // @todo create
         // App\Providers\ViewServiceProvider::class,
-
+        App\Providers\ViewServiceProvider::class,
     ],
 
     /*
