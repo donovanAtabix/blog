@@ -24,8 +24,6 @@ class User extends Authenticatable implements HasMedia
         'name', 'email', 'password', 'avatar_name',
     ];
 
-    protected $avatarName = false;
-
     public function registerMediaCollections()
     {
         $this->addMediaCollection('avatar')->acceptsFile(function (File $file) {
@@ -69,22 +67,13 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(Media::class, 'avatar_id');
     }
 
-    public function getUserName()
-    {
-        return $this->name;
-    }
-
-    public function getUserAvatarName()
-    {
-        return $this->avatar_name;
-    }
-
-    public function displayName()
+    public function getDisplayNameAttribute()
     {
         if ($this->select == false) {
-            return $this->getUserAvatarName();
+            return $this->avatar_name;
         }
-        return $this->getUserName();
+
+        return $this->name;
     }
 
     public function getAvatarThumb()

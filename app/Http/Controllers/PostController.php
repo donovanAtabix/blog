@@ -25,7 +25,7 @@ class PostController extends Controller
         $post->user()->associate(auth()->user());
         $post->save();
 
-        return redirect()->route('blog');
+        return redirect('blog');
     }
 
     public function create()
@@ -40,8 +40,7 @@ class PostController extends Controller
         $comments = $post->comments;
 
         $postUserThumb = $post->user()->get()->first()->getAvatarThumb();
-        $postUserName = $post->user()->get()->first()->displayName();
-        $postUserThumb = $post->user()->get()->first()->getAvatarThumb();
+        $postUserName = $post->user()->get()->first()->display_name;
 
         return view('blogposts.show', [
             'post' => $post,
@@ -76,6 +75,6 @@ class PostController extends Controller
         $this->authorize('delete', $post);
         $post->delete();
 
-        return redirect()->route('blog');
+        return redirect('blog');
     }
 }
