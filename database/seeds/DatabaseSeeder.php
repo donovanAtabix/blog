@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
                 'avatar_name' => 'user' . $i,
             ]);
         }
+
+        $this->call(PostsTableSeeder::class);
     }
 }

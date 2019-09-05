@@ -67,6 +67,16 @@ Blog post
             <label class="label" for="comment">Add Comment</label>
         </div>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div style="margin-bottom: 5mm">
             <textarea class="form-control" name="description"
             placeholder="Comment" rows="5" required>{{old('description')}}</textarea>

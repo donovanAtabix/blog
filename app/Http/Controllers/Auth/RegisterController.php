@@ -71,10 +71,10 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'avatar_name' => $data['avatar_name'],
             'display_name' => $data['avatar_name'],
-            'password' => Hash::make($data['password']),
+            'password' => $data['password'],
         ]);
 
-        $user->addMedia('/Users/donovan/Development/http/app/blog/storage/app/demo/image-avatar.png')
+        $user->addMedia(storage_path('/app/demo/image-avatar.png'))
             ->preservingOriginal()->toMediaCollection('avatar');
 
         Mail::to($data['email'])->send(new RegistrateMail($user));

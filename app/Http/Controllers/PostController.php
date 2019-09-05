@@ -36,8 +36,8 @@ class PostController extends Controller
 
         $comments = $post->comments;
 
-        $postUserThumb = $post->user()->get()->first()->avatarThumb;
-        $postUserName = $post->user()->get()->first()->display_name;
+        $postUserThumb = $post->user->avatarThumb;
+        $postUserName = $post->user->display_name;
 
         return view('blogposts.show', [
             'post' => $post,
@@ -58,7 +58,7 @@ class PostController extends Controller
     {
         $this->authorize('update', $post);
         $request->validate([ // Move to a Request class
-            'title' => ['required', 'min:1'],
+            'title' => ['required', 'min:1', 'max:50'],
             'description' => ['required', 'min:1']
         ]);
 

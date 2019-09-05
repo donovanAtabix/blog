@@ -17,21 +17,23 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::resource('profile', 'ProfileController')->only(['store', 'destroy', 'index'])->middleware('auth');
+Route::get('blog', 'PostController@index');
 
-Route::resource('users', 'UserController')->only(['update'])->middleware('auth');
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('profile', 'ProfileController')->only(['store', 'destroy', 'index']);
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+    Route::resource('users', 'UserController')->only(['update']);
 
-Route::group(['prefix' => 'blog'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::resource('posts', 'PostController')->except(['index'])->middleware('auth');
 
-    Route::resource('comments', 'CommentController')->middleware('auth');
+    Route::group(['prefix' => 'blog'], function () {
+        Route::resource('posts', 'PostController')->except(['index']);
 
-    Route::post('{post}/show', 'CommentController@store')->middleware('auth');
+        Route::resource('comments', 'CommentController');
 
-    Route::get('/createpost', 'PostController@create')->middleware('auth');
+        Route::post('{post}/show', 'CommentController@store');
 
-    Route::get('', 'PostController@index');
+        Route::get('/createpost', 'PostController@create');
+    });
 });

@@ -13,16 +13,17 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $profile)
+    public function index()
     {
-        $select = auth()->user()->select;
-        $firstName = auth()->user()->name;
-        $avatarName = auth()->user()->avatar_name;
-        $media = auth()->user()->getFirstMediaUrl('avatar');
-        $thumb = auth()->user()->getFirstMediaUrl('avatar', 'thumb');
+        $user = auth()->user();
+        $select = $user->select;
+        $firstName = $user->name;
+        $avatarName = $user->avatar_name;
+        $media = $user->getFirstMediaUrl('avatar');
+        $thumb = $user->getFirstMediaUrl('avatar', 'thumb');
 
         return view('profile', [
-            'profile' => $profile,
+            'profile' => $user,
             'media' => $media,
             'thumb' => $thumb,
             'select' => $select,
