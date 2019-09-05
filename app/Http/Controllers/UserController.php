@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,9 +17,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = auth()->user();
-        $user->select = $request->display_name;
-        $user->save();
+        $user = (new UserRepository)->update(auth()->user(), $request->all());
 
         return back();
     }
