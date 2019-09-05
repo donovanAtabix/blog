@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use App\Repositories\PostRepository;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,11 +20,7 @@ class PostController extends Controller
 
     public function store()
     {
-        $attributes = request(['title', 'description']);
-
-        $post = new Post($attributes);
-        $post->user()->associate(auth()->user());
-        $post->save();
+        $post = (new PostRepository)->store();
 
         return redirect('blog');
     }
