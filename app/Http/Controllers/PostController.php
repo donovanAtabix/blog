@@ -39,7 +39,7 @@ class PostController extends Controller
 
         $comments = $post->comments;
 
-        $postUserThumb = $post->user()->get()->first()->getAvatarThumb();
+        $postUserThumb = $post->user()->get()->first()->avatarThumb;
         $postUserName = $post->user()->get()->first()->display_name;
 
         return view('blogposts.show', [
