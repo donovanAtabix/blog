@@ -74,6 +74,11 @@ class User extends Authenticatable implements HasMedia
         return $this->name;
     }
 
+    public function getUserAvatarName()
+    {
+        return $this->avatar_name;
+    }
+
     public function displayName()
     {
         if ($this->select == false) {
