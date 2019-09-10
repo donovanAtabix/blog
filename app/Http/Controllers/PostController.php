@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function index(User $user)
     {
-        $posts = DB::table('posts')->paginate(15);
+        $posts = DB::table('posts')->latest('created_at')->paginate(15);
 
         return view('blogposts.index', ['posts' => $posts,]);
     }
