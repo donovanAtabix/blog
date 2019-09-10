@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
 use App\Repositories\CommentRepository;
+use App\Http\Requests\UpdateComment;
 
 class CommentController extends Controller
 {
@@ -32,11 +32,10 @@ class CommentController extends Controller
         ]);
     }
 
-    public function update(Comment $comment, Request $request)
+    public function update(Comment $comment, UpdateComment $request)
     {
         $this->authorize('update', $comment);
-        $request->validate(['description' => ['required', 'min:5']]);
-        $comment->update(request(['description']));
+        $comment->update($request->validated());
 
         return redirect()->route('posts.update', $comment->post()->get()->first()->id);
     }

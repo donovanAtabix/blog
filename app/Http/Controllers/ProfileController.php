@@ -15,7 +15,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
+        $user = auth()->user()->id;
         $switch_display_name = $user->switch_display_name;
         $firstName = $user->name;
         $avatarName = $user->avatar_name;

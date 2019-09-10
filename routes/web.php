@@ -11,6 +11,7 @@
 |
 */
 
+//een home page
 Route::get('/', function () {
     return view('welcome');
 });
@@ -31,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('posts', 'PostController')->except(['index']);
 
         Route::resource('comments', 'CommentController');
+
+        //posts/{post}/comments
 
         Route::post('{post}/show', 'CommentController@store');
 
