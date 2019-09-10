@@ -27,7 +27,7 @@ class CommentController extends Controller
     public function show(Comment $comment, Post $post)
     {
         $this->authorize('update', $comment);
-        return view('blogposts.edit-comment', [
+        return view('posts.edit-comment', [
             'comment' => $comment, 'post' => $post,
         ]);
     }

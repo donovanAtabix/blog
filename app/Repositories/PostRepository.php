@@ -6,12 +6,12 @@ use App\Post;
 
 class PostRepository
 {
-    public function store()
+    public function store(array $attributes)
     {
-        $attributes = request(['title', 'description']);
-
         $post = new Post($attributes);
         $post->user()->associate(auth()->user());
         $post->save();
+
+        return $post;
     }
 }

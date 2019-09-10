@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Post;
 use Illuminate\Foundation\Http\FormRequest;
+use App\User;
 
-
-class UpdatePost extends FormRequest
+class StorePost extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +15,12 @@ class UpdatePost extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        $user = auth()->user();
+
+        if (isset($user)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -25,8 +31,8 @@ class UpdatePost extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:10|max:50',
-            'description' => 'required|min:10|max:200'
+            'title',
+            'description'
         ];
     }
 }
