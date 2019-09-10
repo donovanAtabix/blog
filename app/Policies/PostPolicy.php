@@ -35,14 +35,22 @@ class PostPolicy
     }
 
     /**
-     * Determine whether the user can update the post.
+     * Determine whether the user can store the post.
      *
      * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @return $user
      * @return mixed
      */
     public function store(User $user)
     {
         return $user->id;
+    }
+
+    public function create(User $user)
+    {
+        if(isset($user)){
+            return true;
+        }
+        return false;
     }
 }

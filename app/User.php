@@ -70,7 +70,7 @@ class User extends Authenticatable implements HasMedia
 
     public function getDisplayNameAttribute()
     {
-        if ($this->select == false) {
+        if ($this->switch_display_name == false) {
             return $this->avatar_name;
         }
 

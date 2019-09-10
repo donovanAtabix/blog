@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\Comment;
 use App\Repositories\PostRepository;
 use App\User;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdatePost;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(User $user)
     {
-        $posts = Post::all();
+        $posts = DB::table('posts')->paginate(15);
 
-        return view('blogposts.index', ['posts' => $posts]);
+        return view('blogposts.index', ['posts' => $posts,]);
     }
 
     public function store()
@@ -32,20 +32,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $users = User::get();
-
-        $comments = $post->comments;
-
-        $postUserThumb = $post->user->avatarThumb;
-        $postUserName = $post->user->display_name;
-
-        return view('blogposts.show', [
-            'post' => $post,
-            'users' => $users,
-            'postUserName' => $postUserName,
-            'postUserThumb' => $postUserThumb,
-            'comments' => $comments,
-        ]);
+        return view('blogposts.show', ['post' => $post,]);
     }
 
     public function edit(Post $post, Comment $comment)
@@ -54,15 +41,11 @@ class PostController extends Controller
         return view('blogposts.edit', ['post' => $post, 'comment' => $comment]);
     }
 
-    public function update(Post $post, Request $request)
+    public function update(UpdatePost $request, Post $post)
     {
         $this->authorize('update', $post);
-        $request->validate([ // Move to a Request class
-            'title' => ['required', 'min:1', 'max:50'],
-            'description' => ['required', 'min:1']
-        ]);
 
-        $post->update(request(['title', 'description']));
+        $post->update($request->validated());
 
         return redirect()->route('posts.update', $post->id);
     }

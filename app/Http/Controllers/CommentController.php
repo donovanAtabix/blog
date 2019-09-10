@@ -9,10 +9,17 @@ use App\Repositories\CommentRepository;
 
 class CommentController extends Controller
 {
+    protected $comment;
+
+    public function __construct(CommentRepository $comment)
+    {
+        $this->comment = $comment;
+    }
+
     public function store(Post $post)
     {
         $this->authorize('store', $post);
-        $comment = (new CommentRepository)->store($post);
+        $comment = $this->comment->store($post);
 
         return redirect()->back();
     }

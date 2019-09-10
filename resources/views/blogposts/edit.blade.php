@@ -9,7 +9,19 @@
 @endsection
 
 @section('content')
+
     <div class="container">
+
+    @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
         <form method="POST" action="/blog/posts/{{$post->id}}" style="margin-top:5mm">
             {{method_field('PATCH')}}
             {{ csrf_field() }}
@@ -37,6 +49,8 @@
                 </button>
             </div>
         </form>
+
+
 
         <form method="POST" action="/blog/posts/{{$post->id}}">
             {{method_field('DELETE')}}

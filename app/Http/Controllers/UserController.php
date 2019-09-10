@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
+    protected $users;
+
+    public function __construct(UserRepository $users){
+        $this->users = $users;
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -16,8 +22,9 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $user = (new UserRepository)->update(auth()->user(), $request->all());
+        $user = $this->users->update(auth()->user(), $request->all());
 
         return back();
     }
 }
+

@@ -8,6 +8,7 @@ use App\Policies\PostPolicy;
 use App\Policies\CommentPolicy;
 use App\Post;
 use App\Comment;
+use App\Policies\UserPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {

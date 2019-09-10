@@ -8,8 +8,8 @@ Blog post
 
 <div class="container">
     <h1 class="title"></h1>
-    <h1 class="title"><img src="{{$postUserThumb}}" alt="Avatar" class="rounded-circle">
-    {{$postUserName}} post: {{$post->title}} </h1>
+    <h1 class="title"><img src="{{$post->user->getFirstMediaUrl('avatar', 'thumb')}}" alt="Avatar" class="rounded-circle">
+    {{$post->user->display_name}} post: {{$post->title}} </h1>
 </div>
 
 <div class="container">
@@ -29,14 +29,11 @@ Blog post
             <li><h3>{{$post->description}}</h3></li>
         </ul>
             <div>
-
-                @foreach($comments as $comment)
-                    @foreach ($users as $user)
-                        @if($comment->user_id === $user->id)
+                @foreach($post->comments as $comment)
                             <ul style="margin-inline-start: 10mm">
                                 <ul>
-                                    <img src="{{$user->getFirstMediaUrl('avatar', 'thumb')}}" alt="Avatar" class="rounded-circle">
-                                     {{$user->display_name}} comment: {{$comment->description}}
+                                    <img src="{{$comment->user->getFirstMediaUrl('avatar', 'thumb')}}" alt="Avatar" class="rounded-circle">
+                                     {{$comment->user->display_name}} comment: {{$comment->description}}
                                     @can('update', $comment)
                                         <a href="/blog/comments/{{$comment->id}}"><h5>edit</h5></a>
                                     @endcan
@@ -54,8 +51,6 @@ Blog post
                                     @endcan
                                 </ul>
                             </ul>
-                        @endif
-                    @endforeach
                 @endforeach
         </div>
     </div>

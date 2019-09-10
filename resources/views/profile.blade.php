@@ -10,7 +10,7 @@ Profile
         Profile
 
         <div style="margin-bottom: 5mm">
-            <form method="POST" action="/users/{{$select}}">
+            <form method="POST" action="/users/{{$switch_display_name}}">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
                 <div>

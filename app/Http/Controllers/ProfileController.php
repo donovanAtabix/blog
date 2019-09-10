@@ -16,7 +16,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $select = $user->select;
+        $switch_display_name = $user->switch_display_name;
         $firstName = $user->name;
         $avatarName = $user->avatar_name;
         $media = $user->getFirstMediaUrl('avatar');
@@ -26,7 +26,7 @@ class ProfileController extends Controller
             'profile' => $user,
             'media' => $media,
             'thumb' => $thumb,
-            'select' => $select,
+            'switch_display_name' => $switch_display_name,
             'firstName' => $firstName,
             'avatarName' => $avatarName,
         ]);
