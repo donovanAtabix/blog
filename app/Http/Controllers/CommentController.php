@@ -24,7 +24,7 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
-    public function show(Comment $comment, Post $post)
+    public function show(Post $post, Comment $comment)
     {
         $this->authorize('update', $comment);
         return view('posts.edit-comment', [
@@ -32,7 +32,7 @@ class CommentController extends Controller
         ]);
     }
 
-    public function update(Comment $comment, UpdateComment $request)
+    public function update(Post $post, Comment $comment, UpdateComment $request)
     {
         $this->authorize('update', $comment);
         $comment->update($request->validated());
@@ -40,7 +40,7 @@ class CommentController extends Controller
         return redirect()->route('posts.update', $comment->post()->get()->first()->id);
     }
 
-    public function destroy(Comment $comment)
+    public function destroy(Post $post, Comment $comment)
     {
         $this->authorize('delete', $comment);
         $comment->delete();

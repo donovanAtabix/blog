@@ -10,7 +10,7 @@ Edit comment
 
 @section('content')
 <div class="container">
-    <form method="POST" action="/blog/comments/{{$comment->id}}">
+    <form method="POST" action="/blog/posts/{{$post->id}}/comments/{{$comment->id}}">
         {{ method_field('PATCH') }}
         {{ csrf_field() }}
 
@@ -28,7 +28,7 @@ Edit comment
                 </button>
             </form>
 
-            <form method="POST" action="/blog/comments/{{$comment->id}}">
+            <form method="POST" action="/blog/posts/{{$post->id}}/comments/{{$comment->id}}">
                 {{ method_field('DELETE')}}
                 {{ csrf_field() }}
 

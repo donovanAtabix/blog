@@ -35,11 +35,11 @@ Blog post
                                     <img src="{{$comment->user->getFirstMediaUrl('avatar', 'thumb')}}" alt="Avatar" class="rounded-circle">
                                      {{$comment->user->display_name}} comment: {{$comment->description}}
                                     @can('update', $comment)
-                                        <a href="/blog/comments/{{$comment->id}}"><h5>edit</h5></a>
+                                        <a href="/blog/posts/{{$post->id}}/comments/{{$comment->id}}"><h5>edit</h5></a>
                                     @endcan
 
                                     @can ('delete', $comment)
-                                        <form method="POST" action="/blog/comments/{{$comment->id}}">
+                                        <form method="POST" action="/blog/posts/{{$post->id}}/comments/{{$comment->id}}">
                                             {{method_field('DELETE')}}
                                             {{ csrf_field() }}
                                             <div style="margin-bottom: 2mm">
