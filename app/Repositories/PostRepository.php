@@ -14,4 +14,11 @@ class PostRepository
 
         return $post;
     }
+
+    public function paginate()
+    {
+        $post = Post::latest('created_at')->paginate(15);
+
+        return $post;
+    }
 }

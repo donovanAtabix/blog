@@ -2,26 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\Comment;
 use App\Repositories\PostRepository;
-use App\User;
 use App\Http\Requests\UpdatePost;
 use App\Http\Requests\StorePost;
 
 class PostController extends Controller
 {
+    protected $post;
+
+    public function __construct(PostRepository $post)
+    {
+        $this->post = $post;
+    }
+
     public function index()
     {
-        $posts = DB::table('posts')->latest('created_at')->paginate(15);
+        $posts = $this->post->paginate();
 
         return view('posts.index', ['posts' => $posts,]);
     }
 
     public function store(StorePost $request)
     {
-        $post = (new PostRepository)->store($request->all());
+        $post = $this->post->store($request->all());
 
         return redirect('blog');
     }

@@ -15,7 +15,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $user = auth()->user()->id;
+        $user = auth()->user();
         $switch_display_name = $user->switch_display_name;
         $firstName = $user->name;
         $avatarName = $user->avatar_name;
@@ -23,7 +23,7 @@ class ProfileController extends Controller
         $thumb = $user->getFirstMediaUrl('avatar', 'thumb');
 
         return view('profile', [
-            'profile' => $user,
+            'profile' => $user->id,
             'media' => $media,
             'thumb' => $thumb,
             'switch_display_name' => $switch_display_name,

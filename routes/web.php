@@ -31,9 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'blog'], function () {
         Route::resource('posts', 'PostController')->except(['index']);
 
-        Route::resource('comments', 'CommentController');
-
-        //posts/{post}/comments
+        Route::resource('posts/{post}/comments', 'CommentController');
 
         Route::post('{post}/show', 'CommentController@store');
 
