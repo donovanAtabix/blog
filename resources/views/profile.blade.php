@@ -14,17 +14,23 @@ Profile
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
                 <div>
-                    <select name="display_name" id="select">
-                        <option value="0"  selected='selected'>{{$avatarName}}</option>
-                        <option value="1">{{$firstName}}</option>
+                    <select name="display_name" class="form-control" id="select">
+                        <option value="0"
+                        @if($switch_display_name == 0)
+                        selected='selected'
+                        @endif
+                        >{{$avatarName}}</option>
+                        <option value="1"
+                         @if($switch_display_name == 1)
+                        selected='selected'
+                        @endif
+                        >{{$firstName}}</option>
                     </select>
                     </div>
 
                     <div>
                         <button type="submit" class="button is-link">update display name</button>
                     </div>
-
-
                 </form>
             </div>
         </div>
