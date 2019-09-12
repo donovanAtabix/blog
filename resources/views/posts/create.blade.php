@@ -11,7 +11,7 @@
 @section('content')
 
     <div class="container">
-        <form method="POST" action="/blog/posts" style="margin-top: 5mm">
+        <form method="POST" action="{{route('posts.store')}}" style="margin-top: 5mm">
         {{ csrf_field()}}
         <div>
             <input class="form-control" type="text" name="title"

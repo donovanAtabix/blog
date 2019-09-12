@@ -28,7 +28,7 @@ class PostController extends Controller
     {
         $post = $this->post->store($request->all());
 
-        return redirect('blog');
+        return redirect()->route('posts.show', $post);
     }
 
     public function create()
@@ -61,6 +61,6 @@ class PostController extends Controller
         $this->authorize('delete', $post);
         $post->delete();
 
-        return redirect('blog');
+        return redirect()->route('home');
     }
 }

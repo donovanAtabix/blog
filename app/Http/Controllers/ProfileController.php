@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\ProfileRepository;
 
 class ProfileController extends Controller
 {
+    protected $profile;
+
+    public function __construct(ProfileRepository $profile)
+    {
+        $this->profile = $profile;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,8 +46,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        auth()->user()->clearMediaCollection('avatar');
-        auth()->user()->addMedia($request->profile)->preservingOriginal()->toMediaCollection('avatar');
+        $this->profile->store($request);
 
         return redirect()->back();
     }
@@ -52,7 +59,8 @@ class ProfileController extends Controller
      */
     public function destroy()
     {
-        auth()->user()->clearMediaCollection('avatar');
+        $this->profile->destroy();
+        $this->profile->avatarImage();
 
         return redirect()->back();
     }

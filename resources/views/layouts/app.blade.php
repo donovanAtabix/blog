@@ -46,7 +46,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 
-                <a class="navbar-brand" href="{{ url('/blog') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     Logo
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -57,8 +57,8 @@
 
 
             <ul class="topnav">
-                <li class="topnav"><a href="/blog">Home</a></li>
-                <li class="topnav"><a href="/profile">Profile</a></li>
+                <li class="topnav"><a href="{{route('home')}}">Home</a></li>
+                <li class="topnav"><a href="{{route('profile.index')}}">Profile</a></li>
             </ul>
 
 
@@ -95,7 +95,7 @@
                                 {{ __('Logout') }}
                             </a>
 
-                            <a href="\profile" class="dropdown-item">Profile</a>
+                            <a href="{{route('profile.index')}}" class="dropdown-item">Profile</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

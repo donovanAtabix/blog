@@ -11,30 +11,19 @@
 |
 */
 
-//een home page
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'PostController@index')->name('home');
 
 Auth::routes();
-
-Route::get('blog', 'PostController@index');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('profile', 'ProfileController')->only(['store', 'destroy', 'index']);
 
     Route::resource('users', 'UserController')->only(['update']);
 
-    Route::get('/home', 'HomeController@index')->name('home');
-
-
     Route::group(['prefix' => 'blog'], function () {
         Route::resource('posts', 'PostController')->except(['index']);
 
         Route::resource('posts/{post}/comments', 'CommentController');
-
-        Route::post('{post}/show', 'CommentController@store');
-
-        Route::get('/createpost', 'PostController@create');
     });
 });

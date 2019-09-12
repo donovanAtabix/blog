@@ -48,7 +48,8 @@ Profile
                         <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                     </div>
                     <div class="custom-file">
-                        <input type="file" value="" name="profile" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <input type="file" value="" name="profile" class="custom-file-input" id="inputGroupFile01"
+                            aria-describedby="inputGroupFileAddon01" required>
                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                     </div>
                     <input type="submit" value="Upload" class="btn btn-success" style="margin-left: 5mm">

@@ -10,16 +10,12 @@
 
 @section('content')
 <div class="container">
-    
+
     @can('create', App\Post::class)
-        <div style="margin-bottom: 5mm"><a href="/blog/createpost">Create post</a></div>
+        <div style="margin-bottom: 5mm"><a href="{{route('posts.create')}}">Create post</a></div>
     @endcan
 
-
-
     @foreach ($posts as $post)
-
-  
 
     <ul>
         <li><a href="/blog/posts/{{$post->id}}">{{$post->title}}</a></li>
@@ -27,7 +23,8 @@
 
     @endforeach
 
-    <a href="{{$posts->previousPageUrl()}}"> <-page back</a>  <a href="{{$posts->nextPageUrl()}}">next page-></a>
+    <a href="{{$posts->previousPageUrl()}}"> <-page back</a>
+        <a href="{{$posts->nextPageUrl()}}">next page-></a>
 
 </div>
 @endsection

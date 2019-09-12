@@ -35,7 +35,7 @@ Blog post
                                     <img src="{{$comment->user->getFirstMediaUrl('avatar', 'thumb')}}" alt="Avatar" class="rounded-circle">
                                      {{$comment->user->display_name}} comment: {{$comment->description}}
                                     @can('update', $comment)
-                                        <a href="/blog/posts/{{$post->id}}/comments/{{$comment->id}}"><h5>edit</h5></a>
+                                        <a href="/blog/posts/{{$post->id}}/comments/{{$comment->id}}/edit"><h5>edit</h5></a>
                                     @endcan
 
                                     @can ('delete', $comment)
@@ -56,7 +56,7 @@ Blog post
     </div>
 
 
-    <form class="box" method="POST" action="/blog/{{$post->id}}/show">
+    <form class="box" method="POST" action="/blog/posts/{{$post->id}}/comments">
         {{ csrf_field() }}
         <div>
             <label class="label" for="comment">Add Comment</label>
