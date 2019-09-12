@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class ProfileRepository
@@ -19,6 +20,14 @@ class ProfileRepository
         $user->clearMediaCollection('avatar');
 
         return $user;
+    }
+
+    public function update(User $user, array $attributes)
+    {
+        $display_name = data_get($attributes, 'display_name');
+
+        $user->switch_display_name = $display_name;
+        $user->save();
     }
 
     public function avatarImage()

@@ -51,6 +51,14 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
+    public function update(Request $request)
+    {
+        $user = auth()->user();
+        $this->profile->update($user, $request->all());
+
+        return redirect()->back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *

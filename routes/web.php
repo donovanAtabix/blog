@@ -17,9 +17,7 @@ Route::get('/', 'PostController@index')->name('home');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('profile', 'ProfileController')->only(['store', 'destroy', 'index']);
-
-    Route::resource('users', 'UserController')->only(['update']);
+    Route::resource('profile', 'ProfileController')->only(['store', 'destroy', 'index', 'update']);
 
     Route::group(['prefix' => 'blog'], function () {
         Route::resource('posts', 'PostController')->except(['index']);
