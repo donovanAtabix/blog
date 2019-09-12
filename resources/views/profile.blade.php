@@ -10,7 +10,7 @@ Profile
         Profile
 
         <div style="margin-bottom: 5mm">
-            <form method="POST" action="/profile/{{$switch_display_name}}">
+            <form method="POST" action="/users/{{$switch_display_name}}">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
                 <div>
@@ -70,7 +70,7 @@ Profile
                         </div>
 
                         <div>
-                            <form action="/profile/{{$profile}}" method="POST">
+                            <form action="/users/{{$profile}}" method="POST">
                                 {{ csrf_field() }}
                                 {{method_field("DELETE")}}
                                 <div>

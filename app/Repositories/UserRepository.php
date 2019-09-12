@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\User;
 use Illuminate\Http\Request;
 
-class ProfileRepository
+class UserRepository
 {
     public function store(Request $request)
     {

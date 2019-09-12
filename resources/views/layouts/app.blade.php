@@ -58,7 +58,7 @@
 
             <ul class="topnav">
                 <li class="topnav"><a href="{{route('home')}}">Home</a></li>
-                <li class="topnav"><a href="{{route('profile.index')}}">Profile</a></li>
+                <li class="topnav"><a href="{{route('users.index')}}">Profile</a></li>
             </ul>
 
 
@@ -95,7 +95,7 @@
                                 {{ __('Logout') }}
                             </a>
 
-                            <a href="{{route('profile.index')}}" class="dropdown-item">Profile</a>
+                            <a href="{{route('users.index')}}" class="dropdown-item">Profile</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

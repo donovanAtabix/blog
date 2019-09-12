@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\ProfileRepository;
+use App\Repositories\UserRepository;
 
-class ProfileController extends Controller
+class UserController extends Controller
 {
     protected $profile;
 
-    public function __construct(ProfileRepository $profile)
+    public function __construct(UserRepository $profile)
     {
         $this->profile = $profile;
     }
