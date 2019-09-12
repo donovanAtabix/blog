@@ -41,7 +41,7 @@ Profile
                 {{session()->get('error')}}
             </div>
             @endif
-            <form action="/profile" method="POST" enctype="multipart/form-data" style="margin-top: 2mm">
+            <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data" style="margin-top: 2mm">
                 {{ csrf_field() }}
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -70,7 +70,7 @@ Profile
                         </div>
 
                         <div>
-                            <form action="/users/{{$profile}}" method="POST">
+                            <form action="/users/{{$user}}" method="POST">
                                 {{ csrf_field() }}
                                 {{method_field("DELETE")}}
                                 <div>

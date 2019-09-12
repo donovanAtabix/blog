@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUser;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 
@@ -29,7 +30,7 @@ class UserController extends Controller
         $thumb = $user->getFirstMediaUrl('avatar', 'thumb');
 
         return view('profile', [
-            'profile' => $user->id,
+            'user' => $user->id,
             'media' => $media,
             'thumb' => $thumb,
             'switch_display_name' => $switch_display_name,
@@ -44,14 +45,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
         $this->profile->store($request);
 
         return redirect()->back();
     }
 
-    public function update(Request $request)
+    public function update(StoreUser $request)
     {
         $user = auth()->user();
         $this->profile->update($user, $request->all());
