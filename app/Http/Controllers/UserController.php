@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUser;
-use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 
 class UserController extends Controller
@@ -23,19 +22,9 @@ class UserController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $switch_display_name = $user->switch_display_name;
-        $firstName = $user->name;
-        $avatarName = $user->avatar_name;
-        $media = $user->getFirstMediaUrl('avatar');
-        $thumb = $user->getFirstMediaUrl('avatar', 'thumb');
 
         return view('profile', [
-            'user' => $user->id,
-            'media' => $media,
-            'thumb' => $thumb,
-            'switch_display_name' => $switch_display_name,
-            'firstName' => $firstName,
-            'avatarName' => $avatarName,
+            'user' => $user,
         ]);
     }
 
