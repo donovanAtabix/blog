@@ -4,7 +4,6 @@
 
 use App\User;
 use Faker\Generator as Faker;
-use Psy\Util\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
