@@ -6,9 +6,13 @@ use App\Comment;
 use Faker\Generator as Faker;
 
 $factory->define(Comment::class, function (Faker $faker) {
+
+    $user = App\User::inRandomOrder()->first();
+    $post = App\Post::inRandomOrder()->first();
+
     return [
-        'user_id' => rand(1, 6),
-        'post_id' => rand(1, 20),
+        'user_id'     => $user->id,
+        'post_id'     => $post->id,
         'description' => $faker->realText(200),
     ];
 });

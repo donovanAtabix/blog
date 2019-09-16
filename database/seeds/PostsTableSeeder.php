@@ -13,8 +13,8 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Post::class, 20)->create()->each(function (Post $post) {
-            factory(Comment::class, rand(1, 10))->create(['post_id' => $post->id]);
+        factory(Post::class, rand(1, 10))->create()->each(function (Post $post) {
+            factory(Comment::class, rand(0, 15))->create(['post_id' => $post->id]);
         });
     }
 }
