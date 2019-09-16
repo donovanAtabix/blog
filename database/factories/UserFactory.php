@@ -11,7 +11,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => Hash::make('secret'),
+        'password' => 'secret',
         'avatar_name' => $faker->name,
         'switch_display_name' => '0',
     ];
