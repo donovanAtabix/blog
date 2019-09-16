@@ -2,8 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use App\Post;
-
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,6 +12,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 5)->create();
+        factory(User::class, 5)->create()->each(function (User $user) {
+            $user->addMedia(storage_path('/app/demo/image-avatar.png'))
+                ->preservingOriginal()->toMediaCollection('avatar');
+        });
     }
 }
