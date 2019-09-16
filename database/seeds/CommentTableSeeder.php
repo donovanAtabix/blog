@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Post;
+use App\Comment;
 
 class CommentTableSeeder extends Seeder
 {
@@ -11,6 +13,6 @@ class CommentTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Comment::class, rand(0, 15))->create();
     }
 }
