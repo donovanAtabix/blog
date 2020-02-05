@@ -23,5 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('posts', 'PostController')->except(['index']);
 
         Route::resource('posts/{post}/comments', 'CommentController');
+
+        Route::resource('documents', 'DocumentController');
+
     });
 });

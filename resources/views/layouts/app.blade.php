@@ -58,6 +58,7 @@
 
             <ul class="topnav">
                 <li class="topnav"><a href="{{route('home')}}">Home</a></li>
+                <li class="topnav"><a href="{{route('documents.index')}}">Documents</a></li>
                 <li class="topnav"><a href="{{route('users.index')}}">Profile</a></li>
             </ul>
 
