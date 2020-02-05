@@ -10,3 +10,11 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/.idea/blog.iml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/.gitignore
+/.DS_Store
+/.idea/misc.xml
+/.idea/php.xml
+/.gitignore
