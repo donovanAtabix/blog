@@ -86,4 +86,8 @@ class User extends Authenticatable implements HasMedia
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function documents(){
+       return $this->hasMany(Document::class);
+    }
 }

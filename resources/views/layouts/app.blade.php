@@ -14,6 +14,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -26,7 +27,7 @@
         .topnav li {
             float: left;
             text-align: center;
-            color: #636b6f;
+            color: #c51f1a;
             padding: 0 25px;
             font-size: 13px;
             font-weight: 600;
@@ -35,8 +36,30 @@
             text-transform: uppercase;
         }
 
-        .topnav a{
+       .data-table table, th, td {
+            border: 1px ;
+            border-collapse: collapse;
+        }
 
+        .button-delete {
+            background-color: #c51f1a;
+            border: none;
+            color: white;
+            padding: 10px 22px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .delete-table table, th, td {
+            border: 1px ;
+        }
+
+        .delete-position {
+            text-align: right;
         }
 
     </style>

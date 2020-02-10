@@ -33,9 +33,7 @@ Profile
                     </div>
                 </form>
             </div>
-        </div>
 
-        <div class="container">
             @if (session()->has('error'))
             <div class="alert alert-danger" style="margin-top: 2mm">
                 {{session()->get('error')}}
@@ -56,9 +54,6 @@ Profile
                 </div>
             </form>
 
-        </div>
-
-        <div class="input-group-prepend" style="margin-left: 23mm">
             <div class="card-columns">
                 <div class="card">
                     <img src="{{$user->getFirstMediaUrl('avatar')}}" alt="Avatar">
@@ -74,13 +69,13 @@ Profile
                                 {{ csrf_field() }}
                                 {{method_field("DELETE")}}
                                 <div>
-                                    <button class="button is-link">Delete Avatar image</button>
+                                    <button class="button-delete">Delete Avatar image</button>
                                 </div>
                             </form>
-
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+</div>
 
             @endsection

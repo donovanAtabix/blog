@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\File;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
@@ -23,4 +24,19 @@ class Document extends Model implements hasMedia
      * @var array
      */
     protected $fillable = ['name'];
+
+    /**
+     * Relation to user.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function registerMediaCollections()
+    {
+        $this->addMediaCollection('documents')->acceptsFile(function (File $file) {
+            return $file->mimeType === 'image/jpeg' || $file->mimeType === 'image/gif' || $file->mimeType === 'application/pdf';
+        });
+    }
 }

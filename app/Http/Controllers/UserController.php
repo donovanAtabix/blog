@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUser;
+use App\Http\Requests\UserRequest;
 use App\Repositories\UserRepository;
 
 class UserController extends Controller
@@ -31,17 +31,17 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUser $request)
+    public function store(UserRequest $request)
     {
         $this->profile->store($request);
 
         return redirect()->back();
     }
 
-    public function update(StoreUser $request)
+    public function update(UserRequest $request)
     {
         $user = auth()->user();
         $this->profile->update($user, $request->all());
