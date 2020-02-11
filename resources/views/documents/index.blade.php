@@ -11,7 +11,7 @@
 @section('content')
 <div class="container">
 
-    @can('create')
+    @if(auth()->user()->hasRole('administrator') || auth()->user()->hasRole('project-manager'))
     <div>
         <form action="{{route('documents.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -42,7 +42,7 @@
             </table>
         </form>
     </div>
-    @endcan
+    @endif
 
     <div>
         <br>
@@ -55,6 +55,7 @@
                 <th>Name</th>
                 <th>Image</th>
                 <th>Date</th>
+                <th>Download</th>
                 <th>Edit</th>
                 <th></th>
             </tr>
@@ -72,6 +73,9 @@
                     </td>
                     <td style="vertical-align:bottom">
                         {{$document->updated_at}}<br>
+                    </td>
+                    <td style="vertical-align:bottom">
+                        <a href=""><i class="fa fa-download fa-2x" aria-hidden="true"></i></a>
                     </td>
                     @can('edit', $document)
                         <td style="vertical-align:bottom">

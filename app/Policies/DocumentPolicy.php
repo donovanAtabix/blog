@@ -40,6 +40,6 @@ class DocumentPolicy
      */
     public function create(User $user, Roles $roles)
     {
-        dd($roles->where('id', $user->id));
+        return $user->hasRole(1);
     }
 }

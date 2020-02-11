@@ -16,12 +16,11 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        dd();
-
         $documents = Document::orderBy('updated_at', 'desc')->get();
 
         return view('documents.index')->with([
             'documents' => $documents,
+            'document'  => Document::class,
         ]);
     }
 

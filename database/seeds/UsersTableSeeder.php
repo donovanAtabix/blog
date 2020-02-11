@@ -13,22 +13,33 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'first_name' => 'Test',
-            'last_name'  => 'Atabix',
-            'email'      => 'admin@example.com',
-            'password'   => 'secret',
-        ])->attachRole('administrator');
+            'name'          => 'Test',
+            'email'         => 'admin@example.com',
+            'password'      => 'secret',
+            'avatar_name'   => 'admin',
+        ])->each(function (User $user) {
+            $user->attachRole('administrator');
 
-        User::create([
-            'first_name' => 'Shop',
-            'last_name'  => 'Manager',
-            'email'      => 'shopmanager@example.com',
-            'password'   => 'secret',
-        ])->attachRole('shop-manager');
-
-        factory(User::class, 5)->create()->each(function (User $user) {
             $user->addMedia(storage_path('/app/demo/image-avatar.png'))
                 ->preservingOriginal()->toMediaCollection('avatar');
+        });
+
+        User::create([
+            'name'          => 'Employee',
+            'email'         => 'employee@example.com',
+            'password'      => 'secret',
+            'avatar_name'   => 'employee',
+        ])->each(function (User $user) {
+            $user->attachRole('project-manager');
+
+            $user->addMedia(storage_path('/app/demo/image-avatar.png'))
+                ->preservingOriginal()->toMediaCollection('avatar');
+        });
+
+        factory(User::class, 5)->create()->each(function (User $user) {
+            $user->attachRole('employee');
+            $user->addMedia(storage_path('/app/demo/image-avatar.png'))
+              ->preservingOriginal()->toMediaCollection('avatar');
         });
     }
 }

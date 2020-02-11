@@ -151,6 +151,7 @@ class ComposerStaticInit624608cdaff696a8efd196591241f327
         ),
         'A' => 
         array (
+            'Atabase\\Acl\\' => 12,
             'App\\' => 4,
         ),
     );
@@ -410,6 +411,10 @@ class ComposerStaticInit624608cdaff696a8efd196591241f327
         array (
             0 => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src',
         ),
+        'Atabase\\Acl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/atabase3/acl/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -452,7 +457,6 @@ class ComposerStaticInit624608cdaff696a8efd196591241f327
         'App\\Http\\Controllers\\DocumentController' => __DIR__ . '/../..' . '/app/Http/Controllers/DocumentController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostController.php',
-        'App\\Http\\Controllers\\RolesController' => __DIR__ . '/../..' . '/app/Http/Controllers/RolesController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -482,8 +486,11 @@ class ComposerStaticInit624608cdaff696a8efd196591241f327
         'App\\Repositories\\DocumentRepository' => __DIR__ . '/../..' . '/app/Repositories/DocumentRepository.php',
         'App\\Repositories\\PostRepository' => __DIR__ . '/../..' . '/app/Repositories/PostRepository.php',
         'App\\Repositories\\UserRepository' => __DIR__ . '/../..' . '/app/Repositories/UserRepository.php',
-        'App\\Roles' => __DIR__ . '/../..' . '/app/Roles.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'Atabase\\Acl\\Models\\Permission' => __DIR__ . '/..' . '/atabase3/acl/src/Models/Permission.php',
+        'Atabase\\Acl\\Models\\Role' => __DIR__ . '/..' . '/atabase3/acl/src/Models/Role.php',
+        'Atabase\\Acl\\Providers\\AclServiceProvider' => __DIR__ . '/..' . '/atabase3/acl/src/Providers/AclServiceProvider.php',
+        'Atabase\\Acl\\Traits\\HasAccessControl' => __DIR__ . '/..' . '/atabase3/acl/src/Traits/HasAccessControl.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',

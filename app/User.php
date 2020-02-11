@@ -2,19 +2,18 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Atabase\Acl\Traits\HasAccessControl;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Request;
+use Spatie\MediaLibrary\File;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\File;
 use Spatie\MediaLibrary\Models\Media;
 
 class User extends Authenticatable implements HasMedia
 {
-    use Notifiable, HasMediaTrait;
+    use Notifiable, HasMediaTrait, HasAccessControl;
 
     /**
      * The attributes that are mass assignable.
@@ -87,7 +86,8 @@ class User extends Authenticatable implements HasMedia
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function documents(){
-       return $this->hasMany(Document::class);
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
     }
 }

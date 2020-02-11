@@ -4,8 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "310da78494efa3363a9fc98271cb8dd4",
+    "content-hash": "9a1ba8444f5b9e94964e001c77bc93f5",
     "packages": [
+        {
+            "name": "atabase3/acl",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:atabix/atabase3-acl.git",
+                "reference": "160938534e24f4e276845863e3a0ab06c0d3b43b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/atabix/atabase3-acl/zipball/160938534e24f4e276845863e3a0ab06c0d3b43b",
+                "reference": "160938534e24f4e276845863e3a0ab06c0d3b43b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "laravel-package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Atabase\\Acl\\Providers\\AclServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Atabase\\Acl\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Rood",
+                    "email": "alex.rood@atabix.nl"
+                }
+            ],
+            "description": "Atabase 3 ACL",
+            "keywords": [
+                "acl",
+                "atabase",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/atabix/atabase3-acl/tree/v1.1.0",
+                "issues": "https://github.com/atabix/atabase3-acl/issues"
+            },
+            "time": "2019-10-31T13:40:40+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -1796,9 +1847,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Manipulate images with an expressive API",
@@ -1846,9 +1897,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Easily optimize images using PHP",
@@ -1923,9 +1974,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://murze.be"
+                    "homepage": "https://murze.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Associate files with Eloquent models",
@@ -1976,9 +2027,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Convert a pdf to an image",
@@ -2025,9 +2076,9 @@
             "authors": [
                 {
                     "name": "Alex Vanderbist",
-                    "role": "Developer",
                     "email": "alex@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Easily create, use and destroy temporary directories",
